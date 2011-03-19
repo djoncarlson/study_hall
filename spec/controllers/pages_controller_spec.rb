@@ -2,11 +2,15 @@ require 'spec_helper'
 
 describe PagesController do
 	render_views
-	
+	before(:each) do
+		@base_title = "Study Hall Application"
+	end
+		
   describe "GET 'home'" do
     it "should have the right title" do
       get 'home'
-      response.should have_selector("title", :content => "Study Hall Application | Home")
+      response.should have_selector("title", 
+      															:content => @base_title + " | Home")
     end
   end
 
@@ -20,7 +24,8 @@ describe PagesController do
   describe "GET 'contact'" do
     it "should have the right title" do
       get 'contact'
-      response.should have_selector("title", :content => "Study Hall Application | Contact")
+      response.should have_selector("title", 
+      															:content => @base_title + " | Contact")
     end
   end
 
@@ -34,7 +39,8 @@ describe PagesController do
   describe "GET 'about'" do
     it "should have the right title" do
       get 'about'
-      response.should have_selector("title", :content => "Study Hall Application | About")
+      response.should have_selector("title", 
+      															:content => @base_title + " | About")
     end
   end
 
