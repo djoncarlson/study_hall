@@ -1,0 +1,19 @@
+<%= form_for @student do |f| %>
+  <%= render 'shared/error_messages', :object => f.object %>
+  <div class="field">
+    <%= f.label "Student Name" %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label "Assignment to be completed" %><br/>
+    <%= f.text_field :assignment %>
+  </div>
+  <div class="field">
+    <%= f.label "Special instructions (optional)"%><br/>
+    <%= f.text_field :instructions %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Submit" %>
+  </div>
+
+<% end %>

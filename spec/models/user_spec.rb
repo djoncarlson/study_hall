@@ -140,4 +140,40 @@ describe User do
       @user.should be_admin
     end
   end
+  describe "student associations" do
+    before(:each) do
+      @user = User.create(@attr)
+      @st1 = Factory(:student, :user => @user, :created_at => 1.day.ago)
+      @st2 = Factory(:student, :user => @user, :created_at => 1.hour.ago)
+    end
+    
+    it "should have a students attribute" do
+      @user.should respond_to(:students)
+    end
+
+    it "should have the right students in the right order" do
+      @user.students.should == [@st2, @st1]
+    end
+    
+    it "should destroy associated students" do
+      @user.destroy
+      [@st1, @st2].each do |student|
+        Student.find_by_id(student.id).should be_nil
+      end
+    end
+    describe "status feed" do
+      it "should have a feed" do
+        @user.should respond_to(:feed)
+      end
+      it "should include the user's students" do
+        @user.feed.include?(@st1).should be_true
+        @user.feed.include?(@st2).should be_true
+      end
+      
+      it "should not include a different users's students" do
+        st3 = Factory(:student, :user => Factory(:user, :email => Factory.next(:email)))
+        @user.feed.include?(st3).should be_false
+      end
+    end
+  end
 end

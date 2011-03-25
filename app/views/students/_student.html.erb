@@ -1,0 +1,15 @@
+<tr>
+    <td class="student_name"><%= student.name %></td>
+    <td class="student_assn"><%= student.assignment %><br />
+    <span class="timestamp">Created <%= time_ago_in_words(student.created_at)%> ago.</span>
+    </td>
+    <% if current_user?(student.user) %>
+      <td>
+        <%= link_to "delete", student, 
+            :method => :delete,
+            :confirm => "You sure?",
+            :title => student.name %>
+      </td>
+    <% else %>
+</tr>
+

@@ -68,6 +68,14 @@ describe UsersController do
 			get :show, :id => @user
 			assigns(:user).should == @user
 		end
+    
+    it "should show the user's students" do
+      st1 = Factory(:student, :user => @user, :name => "joe blow", :assignment => "do this thing" )
+      st2 = Factory(:student, :user => @user, :name => "outher guy", :assignment => "these things")
+      get :show, :id => @user
+      response.should contain( st1.name )
+      response.should contain( st2.name )
+    end
   end
   
   
@@ -221,7 +229,7 @@ describe UsersController do
       
       it "should deny access to 'update'" do
         put :update, :id => @user, :user => {}
-        response.should redirect_to(signup_path)
+        response.should redirect_to(signin_path)
       end
     end
     

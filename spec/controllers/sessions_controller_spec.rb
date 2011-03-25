@@ -21,15 +21,15 @@ describe SessionsController do
                   :password => "invalid" }
       end
       
-      it "should redirect to signin path" do
-        post :create, :session => @attr
-        response.should redirect_to(signin_path)
-      end
+#      it "should redirect to signin path" do
+#        post :create, :session => @attr
+#        response.should redirect_to(signin_path)
+#      end
       
 #      it "should have the right title" do
- #       post :create, :session => @attr
-  #      response.should have_selector("title", :content => "Sign in")
-   #   end
+#       post :create, :session => @attr
+#      response.should have_selector("title", :content => "Sign in")
+#   end
       
       it "should have a flash.now message" do
         post :create, :session => @attr

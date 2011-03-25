@@ -1,0 +1,34 @@
+<table class="students">
+    <tr>
+      <td class="student_name">
+        <strong>Teacher</strong>
+      </td>
+      <td class="student_name">
+        <strong>Student</strong>
+      </td>
+      <td class="student_assn">
+        <strong>Assignment</strong>      
+      </td>
+    </tr>
+    <tr>
+      <%= @user.each do |user| %>
+        <%= @students.user.each do |student| %>
+          <td class="student_name">user.name</td>
+          <td class="student_name">student.name</td>
+          <td class="student_name">student.assignment</td>
+          <% if current_user?(student.user) %>
+            <td>
+            <%= link_to "delete", student, 
+            :method => :delete,
+            :confirm => "You sure?",
+            :title => student.name %>
+            </td>
+          <% else %>
+            <td>
+              duh
+            </td>
+          <% end %>
+        <% end %>
+      <% end %>
+   </tr>
+</table>

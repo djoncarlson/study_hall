@@ -8,3 +8,9 @@ end
 Factory.sequence :email do |n|
   "person-#{n}@example.com"
 end
+
+Factory.define :student do |student|
+  student.name "Kid A"
+  student.assignment "Math homework"
+  student.instructions "Do it all"
+end

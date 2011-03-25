@@ -8,16 +8,23 @@
     </td>
     <td class="sidebar round">
       <!-- <strong>Name</strong> <%= @user.name %><br /> -->
-      <%= link_to "Show All Students", user_path(@user) %>       
+      <%= link_to "Show All Students", user_path(@user) %><br/>
+      <%= link_to "Add a student", root_path %>
     </td>
   </tr>
-  <tr>
-    <td class="main">
-      <strong>Students</strong>
-    </td>
-    <td class="main">
-      <strong>Assignments</strong>      
-    </td>
-  </tr>
+  <% unless @user.students.empty? %>
+    <table class="students">
+    <tr>
+      <td class="student_name">
+        <strong>Student</strong>
+      </td>
+      <td class="student_assn">
+        <strong>Assignment</strong>      
+      </td>
+    </tr>
+      <%= render @students %>
+    </table>
+     <%= will_paginate @students %>
+  <% end %>
 </table>  
 

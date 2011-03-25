@@ -187,3 +187,58 @@ ul.users {
 .users li {
     list-style: none;
 }
+
+h1.student {
+    margin-bottom: 0.3em;   
+}
+
+table.students {
+    margin-top: 1em;
+}
+
+table.students tr {
+    height: 15px;
+}
+
+table.students tr td.student_name {
+    border-top: 1px solid #ccc;
+    vertical-align: top;
+    padding-top: 1px;
+    width: 35%;
+}
+table.students tr td.student_assn {
+    border-top: 1px solid #ccc;
+    vertical-align: top;
+    padding-top: 1px;
+    width: 65%;
+}
+
+table.students tr td.student span.content {
+}
+
+table.students tr td.student_assn span.timestamp {
+    display: block;
+    font-size: 75%;
+    color: #666;
+}
+
+div.user_info a {
+    text-decoration: none;
+}
+
+div.user_info span.user_name {
+    position: absolute;
+}
+
+div.user_info span.students {
+    font-size: 80%;
+}
+
+form.new_student {
+    margin-bottom: 2em;
+}
+
+form. new_student textarea {
+    height: 4em;
+    margin-bottom: 0;
+}
