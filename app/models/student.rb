@@ -1,6 +1,5 @@
 class Student < ActiveRecord::Base
-  attr_accessible :name, :assignment, :instructions
-
+  attr_accessible :name, :assignment, :instructions, :mlunch, :tlunch, :wlunch, :rlunch, :flunch, :mafter, :tafter, :wafter, :rafter, :fafter
   belongs_to :user
   
   validates :name, :presence => true

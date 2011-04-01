@@ -1,15 +1,57 @@
 <tr>
-    <td class="student_name"><%= feed_item.name %></td>
-    <td class="student_assn"><%= feed_item.assignment %><br />
-    <span class="timestamp">Created <%= time_ago_in_words(feed_item.created_at)%> ago.</span>
-    </td>
+    <td class="student_del">
     <% if current_user?(feed_item.user) %>
-      <td class="student_name">
       <%= link_to "delete", feed_item, 
             :method => :delete,
             :confirm => "You sure?",
             :title => feed_item.name %>
-      </td>
+      
     <% end %>
+    </td>
+    <td class="student_name"><%= link_to feed_item.name, student_path(feed_item) %><br />
+    <% if feed_item.created_at >= (Time.now - 7.days) %>  
+      <span class="timestamp">Created <%= time_ago_in_words(feed_item.created_at)%> ago.</span>
+    <% else %>
+      <span class="timestamp_over">Created <%= time_ago_in_words(feed_item.created_at)%> ago.</span>
+    <% end %>
+    </td>
+    <td class="student_assn"><%= User.where(:id => feed_item.user_id).first.name %></td>
+    <td class="student_dates"> 
+      <ul>   
+      <% if feed_item.mlunch? %>
+         <li>Monday during lunch</li>
+      <% end %>
+      <% if feed_item.mafter? %>
+        <li>Monday after school</li>
+      <% end %>
+      <% if feed_item.tlunch? %>
+        <li>Tuesday during lunch</li>
+      <% end %>
+      <% if feed_item.tafter? %>
+        <li>Tuesday after school</li>
+      <% end %>
+      <% if feed_item.wlunch? %>
+         <li>Wednesday during lunch</li>
+      <% end %>
+      <% if feed_item.wafter? %>
+        <li>Wednesday after school</li>
+      <% end %>
+      <% if feed_item.rlunch? %>
+        <li>Thursday during lunch</li>
+      <% end %>
+      <% if feed_item.rafter? %>
+        <li>Thursday after school</li>
+      <% end %>
+      <% if feed_item.flunch? %>
+        <li>Friday during lunch</li>
+      <% end %>
+      <% if feed_item.fafter? %>
+        <li>Friday after school</li>
+      <% end %>
+      </ul>
+    </td>
+<!--     <td class="student_assn"><%= feed_item.assignment %><br />
+    <span class="timestamp">Created <%= time_ago_in_words(feed_item.created_at)%> ago.</span> -->
+
 </tr>
 

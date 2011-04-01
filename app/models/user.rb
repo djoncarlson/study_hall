@@ -44,10 +44,22 @@ class User < ActiveRecord::Base
 	  (user && user.salt == cookie_salt) ? user : nil
   end
 	
-	def feed
-    Student.where("user_id = ?", 1)  
+	def feed(section)
+    if section.nil?
+      return Student.all
+      #Student.where("user_id = ?", id)  
+    else  
+	    return Student.where(section => true)
+    end
   end
- 
+  
+  def owner(student)
+#    User.where(:name => student.name)
+  end 
+
+  def fetch_students_for_attendance(section)
+    return Student.where(section => true)
+  end
 	
 	private
 		def encrypt_password

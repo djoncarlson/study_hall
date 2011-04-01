@@ -1,0 +1,9 @@
+<h1>Attendance</h1>
+
+<% if @section_list.any? %>
+  <% @section_list.each do |student| %>
+    <%= student.name %> should be here<br />
+  <% end %>
+<% else %>
+No students today!
+<% end %>

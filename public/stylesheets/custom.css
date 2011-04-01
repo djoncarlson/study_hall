@@ -1,5 +1,5 @@
 .container {
-	width: 710px;
+	width: 800px;
 }
 
 body {
@@ -17,13 +17,12 @@ header img {
 
 section {
 	margin-top: 1em;
-	font-size: 120%;
-	padding: 20px;
+	padding: 25px;
 	background: #fff;
 }
 
-section h1 {
-	font-size: 200%;
+div.section h1 {
+	font-size: 175%;
 }
 
 /* Links */
@@ -192,26 +191,57 @@ h1.student {
     margin-bottom: 0.3em;   
 }
 
+table.form_holder {
+    vertical-align: top;
+    width: auto;
+}
+
+table.form_holder tr {
+    height: 15px;
+    vertical-align: absolute;    
+}
+
 table.students {
     margin-top: 1em;
+    vertical-align: bottom;
 }
 
 table.students tr {
     height: 15px;
+    vertical-align: top;
 }
 
 table.students tr td.student_name {
     border-top: 1px solid #ccc;
     vertical-align: top;
     padding-top: 1px;
-    width: 35%;
+    width: 30%;
 }
+
+table.students tr td.student_del {
+    border-top: 1px solid #ccc;
+    vertical-align: center;
+    padding-top: 1px;
+    width: 10%;
+    font-size: 85%;
+}
+
 table.students tr td.student_assn {
     border-top: 1px solid #ccc;
     vertical-align: top;
     padding-top: 1px;
-    width: 65%;
+    width: 25%;
 }
+
+table.students tr td.student_dates {
+    border-top: 1px solid #ccc;
+    vertical-align: top;
+    padding-top: 1px;
+    width: 30%;
+    font-size: 85%;
+    color: #666;
+}
+
 
 table.students tr td.student span.content {
 }
@@ -222,6 +252,17 @@ table.students tr td.student_assn span.timestamp {
     color: #666;
 }
 
+table.students tr td.student_name span.timestamp {
+    display: block;
+    font-size: 75%;
+    color: #666;
+}
+
+table.students tr td.student_name span.timestamp_over {
+    display: block;
+    font-size: 75%;
+    color: red;
+}
 div.user_info a {
     text-decoration: none;
 }
@@ -238,7 +279,22 @@ form.new_student {
     margin-bottom: 2em;
 }
 
-form. new_student textarea {
+form.new_student textarea {
     height: 4em;
     margin-bottom: 0;
+}
+
+table.box_table {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    vertical-align: bottom;
+	text-align: right;
+	margin-top: 10px;
+	width: 175px;
+}
+
+table.box_table tr {
+    height: 30px;
+    float: right;
+    background-color: #fff;
 }

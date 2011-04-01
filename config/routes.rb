@@ -3,16 +3,17 @@ StudyHall::Application.routes.draw do
 
 	resources :users
 	resources :sessions, :only => [:new, :create, :destroy]
-  resources :students, :only => [:show, :create, :destroy]
+  resources :students, :only => [:show, :create, :destroy, :update, :edit]
 
-  match '/signout', :to => 'sessions#destroy'
-  match '/signin',  :to => 'sessions#new'
-	match '/signup', 	:to => 'users#new'
-	match '/contact', :to => 'pages#contact'
-	match '/about', 	:to => 'pages#about'
-	match '/help', 		:to => 'pages#help'
-  match '/students', :to => 'students#show'
-	root 							:to => 'pages#home'
+  match '/signout',     :to => 'sessions#destroy'
+  match '/students',    :to => 'students#show'
+  match '/signin',      :to => 'sessions#new'
+	match '/signup', 	    :to => 'users#new'
+	match '/contact',     :to => 'pages#contact'
+	match '/about', 	    :to => 'pages#about'
+	match '/help', 		    :to => 'pages#help'
+	root 							    :to => 'pages#home'
+   
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,10 +1,25 @@
 <% if signed_in? %>
+
   <table class="front" summary="For signed-in users">
     <tr>
-      <td class="main">
-        <h1 class="student">Assign Study Hall</h1>
+      <td style="vertical-align: top">
+        <h3 class="student">Assign Study Hall</h3>
         <%= render 'shared/student_form' %>
-        <%= render 'shared/feed' %>
+      </td>
+      <td style="vertical-align: top">
+       <!--- <div>
+          <%= render 'shared/attendance_form' %>
+        </div> --> 
+        <div>
+          <% if @feed_items.any? %>
+          <h3 class="student">Current Study Hall Participants</h3>
+          <%= render 'shared/attendance_form' %>
+          <%= render 'shared/feed' %>
+          <% else %>
+          <h3 class="student">No Participants
+          <%= render 'shared/attendance_form' %>
+          <% end %>
+        </div>
       </td>
     </tr>
   </table>

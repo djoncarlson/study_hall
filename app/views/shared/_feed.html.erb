@@ -1,6 +1,12 @@
 <% unless @feed_items.empty? %>
-  <table class="students" summary="User students">
+<table class="students" summary="User students">
+    <tr>
+      <th>&nbsp;</th>
+      <th>Student Name</th>
+      <th>Assigned By</th>      
+      <th>Dates Attending</th>
+    </tr>
     <%= render :partial => 'shared/feed_item', :collection => @feed_items %>
-  </table>
+</table>
   <%= will_paginate @feed_items %>
 <% end %>

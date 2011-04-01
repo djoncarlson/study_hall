@@ -2,12 +2,10 @@
 	<tr>
 		<td class="main">
       <h1>
-	      <!-- <%= gravatar_for @user %> -->
 	      <%= @user.name %>
       </h1>
     </td>
     <td class="sidebar round">
-      <!-- <strong>Name</strong> <%= @user.name %><br /> -->
       <%= link_to "Show All Students", user_path(@user) %><br/>
       <%= link_to "Add a student", root_path %>
     </td>
@@ -19,7 +17,7 @@
         <strong>Student</strong>
       </td>
       <td class="student_assn">
-        <strong>Assignment</strong>      
+        <strong>Assignment</strong>
       </td>
     </tr>
       <%= render @students %>

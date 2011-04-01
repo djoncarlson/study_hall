@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110323021708) do
+ActiveRecord::Schema.define(:version => 20110401033110) do
 
   create_table "students", :force => true do |t|
     t.string   "name"
@@ -19,6 +19,16 @@ ActiveRecord::Schema.define(:version => 20110323021708) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "mlunch"
+    t.boolean  "tlunch"
+    t.boolean  "wlunch"
+    t.boolean  "rlunch"
+    t.boolean  "mafter"
+    t.boolean  "tafter"
+    t.boolean  "wafter"
+    t.boolean  "rafter"
+    t.boolean  "flunch"
+    t.boolean  "fafter"
   end
 
   add_index "students", ["user_id"], :name => "index_students_on_user_id"

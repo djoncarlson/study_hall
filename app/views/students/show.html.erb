@@ -1,34 +1,68 @@
-<table class="students">
-    <tr>
-      <td class="student_name">
-        <strong>Teacher</strong>
-      </td>
-      <td class="student_name">
-        <strong>Student</strong>
-      </td>
-      <td class="student_assn">
-        <strong>Assignment</strong>      
-      </td>
-    </tr>
-    <tr>
-      <%= @user.each do |user| %>
-        <%= @students.user.each do |student| %>
-          <td class="student_name">user.name</td>
-          <td class="student_name">student.name</td>
-          <td class="student_name">student.assignment</td>
-          <% if current_user?(student.user) %>
-            <td>
-            <%= link_to "delete", student, 
-            :method => :delete,
-            :confirm => "You sure?",
-            :title => student.name %>
-            </td>
-          <% else %>
-            <td>
-              duh
-            </td>
-          <% end %>
-        <% end %>
+<table><tr><td>
+<h3><%= @student.name %></h3>
+<div class="student">
+<p>
+<h4>Should be working on:</h4>
+<ul>
+  <li><%= @student.assignment%></li>
+</ul>
+</p>
+<% if @student.instructions? %>
+  <p>
+  <h4>Special Instructions:</h4>
+  <ul>
+    <li><%= @student.instructions%></li>
+  </ul>
+  </p>
+<% end %>
+<p>
+<h4>Should be attending on:</h4>
+      <ul>
+      <% if @student.mlunch? %>
+         <li>Monday during lunch</li>
       <% end %>
-   </tr>
+      <% if @student.mafter? %>
+        <li>Monday after school</li>
+      <% end %>
+      <% if @student.tlunch? %>
+        <li>Tuesday during lunch</li>
+      <% end %>
+      <% if @student.tafter? %>
+        <li>Tuesday after school</li>
+      <% end %>
+      <% if @student.wlunch? %>
+         <li>Wednesday during lunch</li>
+      <% end %>
+      <% if @student.wafter? %>
+        <li>Wednesday after school</li>
+      <% end %>
+      <% if @student.rlunch? %>
+        <li>Thursday during lunch</li>
+      <% end %>
+      <% if @student.rafter? %>
+        <li>Thursday after school</li>
+      <% end %>
+      <% if @student.flunch? %>
+        <li>Friday during lunch</li>
+      <% end %>
+      <% if @student.fafter? %>
+        <li>Friday after school</li>
+      <% end %>
+      </ul>
+</p>      
+<% if @student.created_at <= (Time.now - 7.days) %>
+  <p style="color: red">Created <%= time_ago_in_words(@student.created_at)%> ago.</p>
+<% else %>
+  <p>Created <%= time_ago_in_words(@student.created_at) %> ago.</p>
+<% end %>
+</div>
+</td>
+<% if current_user.id == @student.user_id %>
+<td>
+<div style="float: right; border-left: 1px">
+  <%= render 'shared/student_update_form' %>
+</div>
+</td>
+<% end %>
+</tr>
 </table>
