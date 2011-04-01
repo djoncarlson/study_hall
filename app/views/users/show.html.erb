@@ -1,25 +1,34 @@
 <table class="profile" summary="Profile Information">
 	<tr>
 		<td class="main">
-      <h1>
+      <h3>
 	      <%= @user.name %>
-      </h1>
+      </h3>
     </td>
-    <td class="sidebar round">
+<!--    <td class="sidebar round">
       <%= link_to "Show All Students", user_path(@user) %><br/>
       <%= link_to "Add a student", root_path %>
-    </td>
+    </td> -->
   </tr>
-  <% unless @user.students.empty? %>
+  <% if @user.students.empty? %>
+    You have no students assigned to study hall.<br />
+    Want to <%=link_to "add one", root_path %>?
+  <% else %>
     <table class="students">
     <tr>
+      <td class="student_del">&nbsp;</td>
       <td class="student_name">
         <strong>Student</strong>
       </td>
       <td class="student_assn">
         <strong>Assignment</strong>
       </td>
+      <td class="student_name">
+        <strong>Sessions</strong>
+      </td>
     </tr>
+<!--      
+      <%= render @user %> -->
       <%= render @students %>
     </table>
      <%= will_paginate @students %>

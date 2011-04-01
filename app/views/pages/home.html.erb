@@ -10,7 +10,7 @@
        <!--- <div>
           <%= render 'shared/attendance_form' %>
         </div> --> 
-        <div>
+        <div align="left">
           <% if @feed_items.any? %>
           <h3 class="student">Current Study Hall Participants</h3>
           <%= render 'shared/attendance_form' %>
@@ -24,6 +24,8 @@
     </tr>
   </table>
 <% else %>
-  <h1>Academia Cotopaxi Study Hall Manager</h1> 
-  <%= link_to "Sign up", signup_path, :class => "signup_button round" %>
+  <div align="center">
+  <h2>Academia Cotopaxi Study Hall Manager</h2> 
+  </div>
+  <%= link_to "Sign in", signin_path, :class => "signin_button round" %>
 <% end %>

@@ -2,6 +2,13 @@
 <h3><%= @student.name %></h3>
 <div class="student">
 <p>
+<h4>Assigned by: </h4>
+<ul>
+  <li><%= User.where(:id => @student.user_id).first.name %></li>
+</ul>
+</p>
+
+<p>
 <h4>Should be working on:</h4>
 <ul>
   <li><%= @student.assignment%></li>
@@ -55,6 +62,13 @@
 <% else %>
   <p>Created <%= time_ago_in_words(@student.created_at) %> ago.</p>
 <% end %>
+<% if current_user.id == @student.user_id %>
+  <%= link_to "delete", @student, 
+            :method => :delete,
+            :confirm => "You sure?",
+            :title => @student.name %>
+<% end %>
+
 </div>
 </td>
 <% if current_user.id == @student.user_id %>

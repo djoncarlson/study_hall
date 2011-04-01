@@ -91,6 +91,19 @@ a.signup_button {
 	padding: 15px;
 }
 
+a.signin_button {
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	text-align: center;
+	width: 100px;
+	color: #fff;
+	background: #00a600;
+	font-size: 150%;
+	font-weight: bold;
+	padding: 15px;
+}
+
 /* Round corners */
 .round {
 	-moz-border-radius:			10px;
@@ -220,7 +233,7 @@ table.students tr td.student_name {
 
 table.students tr td.student_del {
     border-top: 1px solid #ccc;
-    vertical-align: center;
+    vertical-align: top;
     padding-top: 1px;
     width: 10%;
     font-size: 85%;
