@@ -14,7 +14,7 @@ class StudentsController < ApplicationController
   
   def destroy
     @student.destroy
-    redirect_back_or root_path
+    redirect_to root_path
   end
   
   def show

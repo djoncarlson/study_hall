@@ -1,5 +1,5 @@
 <li>
-  <%= link_to user.name, user %>
+  <%= link_to user.name, user %> has <%= Student.where(:user_id => user.id).count %> study hall participants.
   <% if current_user.admin? %>
     <%= link_to "delete", user, :method => :delete, :confirm => "Are you sure?", :title => "Delete #{user.name}" %>
   <% end %>
