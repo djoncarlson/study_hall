@@ -1,0 +1,4 @@
+To Do:
+Smart Student List
+History on students
+Attendance list

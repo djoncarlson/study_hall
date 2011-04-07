@@ -11,12 +11,21 @@
 #
 require 'digest'
 class User < ActiveRecord::Base
+  include ActiveModel::Validations
+  
+  class CodeValidator < ActiveModel::EachValidator
+    def validate_each(record, attribute, value)
+      record.errors[attribute] << "must match the correct secret code." unless value =~ /\Awexification/i
+    end
+  end
+  
 	attr_accessor :password
-	attr_accessible :name, :email, :password, :password_confirmation
+  attr_accessible :name, :email, :password, :password_confirmation, :secretcode
 	
 	has_many :students, :dependent => :destroy
 	
 	email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+#  secret_regex = /(wexification)/i
 
 	validates :name, 	:presence => true,
 										:length => { :maximum => 50 }
@@ -26,6 +35,8 @@ class User < ActiveRecord::Base
 	validates :password,	:presence	 		=> true,
 												:confirmation => true,
 												:length				=> { :within => 6..40 }
+  validates :secretcode,  :presence => true, 
+                          :code => true
 
 	before_save :encrypt_password
 	
@@ -53,10 +64,6 @@ class User < ActiveRecord::Base
     end
   end
   
-  def owner(student)
-#    User.where(:name => student.name)
-  end 
-
   def fetch_students_for_attendance(section)
     return Student.where(section => true)
   end
@@ -79,9 +86,5 @@ class User < ActiveRecord::Base
 			Digest::SHA2.hexdigest(string)
 		end
 		
-		def make_secret_code(string)
-      Digest::SHA.hexdigest(string)
-    end
-  
 end
 
