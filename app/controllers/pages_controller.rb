@@ -4,7 +4,7 @@ class PagesController < ApplicationController
 		if signed_in?
   		@student = Student.new
   		@feed_items = current_user.feed(params[:attendance]).paginate(:page => params[:page])
-		  @teacher = current_user.owner(params[:user_id])
+		  #@teacher = current_user.owner(params[:user_id])
 		end
   end
   
