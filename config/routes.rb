@@ -6,7 +6,7 @@ StudyHall::Application.routes.draw do
   resources :students, :only => [:show, :create, :destroy, :update, :edit]
 
   match '/signout',     :to => 'sessions#destroy'
-  match '/students',    :to => 'students#show'
+  match '/students',    :to => 'students#index'
   match '/signin',      :to => 'sessions#new'
 	match '/signup', 	    :to => 'users#new'
 	match '/contact',     :to => 'pages#contact'

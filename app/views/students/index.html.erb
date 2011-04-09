@@ -10,13 +10,11 @@
         <strong>Assignment</strong>      
       </td>
     </tr>
-    <tr>
-      <%= @user.each do |user| %>
-        <%= @students.user.each do |student| %>
-          <td class="student_name">user.name</td>
-          <td class="student_name">student.name</td>
-          <td class="student_name">student.assignment</td>
+        <% unless @students.empty? %>
+          <% @students.each do |student| %>
+            <tr><td><%= student.user.name %></td>
+            <td><%= student.name %></td>
+            <td><%= student.assignment %></td></tr>
+          <% end %>
         <% end %>
-      <% end %>
-   </tr>
 </table>

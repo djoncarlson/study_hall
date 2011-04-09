@@ -2,6 +2,18 @@ class StudentsController < ApplicationController
   before_filter :authenticate, :only => [:create, :destroy]
   before_filter :authorized_user, :only => :destroy
   
+  def index
+    users = User.all
+    @students = []
+    users.each do |user|
+      student_array = Student.where(:user_id => user.id)
+      student_array.each do |student|
+        @students << student
+      end
+    end
+  end
+  
+  
   def create
     @student = current_user.students.build(params[:student])
     if @student.save

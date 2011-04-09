@@ -14,7 +14,9 @@
           <% if @feed_items.any? %>
           <h3 class="student">Current Study Hall Participants</h3>
           <%= render 'shared/attendance_form' %>
+          <div id="student_list">
           <%= render 'shared/feed' %>
+          </div>
           <% else %>
           <h3 class="student">No Participants
           <%= render 'shared/attendance_form' %>

@@ -7,10 +7,12 @@ body {
 }
 
 header {
+	width: 800px;
 	padding-top: 20px;
 }
 
 header img {
+    width: 200px;
 	padding: 1em;
 	background: #fff;
 }
@@ -43,6 +45,7 @@ a:visited {
 /* Navigation */
 
 nav {
+    width: 780px;
 	float: right;
 }
 
