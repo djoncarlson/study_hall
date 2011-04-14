@@ -8,17 +8,15 @@
   </head>
   <body>
   	<div class="container">
-  	  <div id="header" class="span-20 last" >
+  	  <div id="header">
 			<%= render 'layouts/header' %>
 			</div>
-			<hr />
-        <section class="round">
-
+			
+      <section class="round">
         <% flash.each do |key, value| %>
           <%= content_tag(:div, value, :class => "flash #{key}" )%>
         <% end %>
         <%= yield %>
-
   		</section>
 
   		<%= render 'layouts/footer' %>

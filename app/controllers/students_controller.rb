@@ -1,36 +1,43 @@
 class StudentsController < ApplicationController
   before_filter :authenticate, :only => [:create, :destroy]
-  before_filter :authorized_user, :only => :destroy
+#  before_filter :authorized_user, :only => :destroy
   
-  def index
-    users = User.all
-    @students = []
-    users.each do |user|
-      student_array = Student.where(:user_id => user.id)
-      student_array.each do |student|
-        @students << student
-      end
-    end
-  end
-  
+  def new
+    @student = Student.new
+  end  
   
   def create
-    @student = current_user.students.build(params[:student])
+    @student = Student.new(params[:student])
     if @student.save
       flash[:success] = "Student created!"
-      redirect_to root_path
+      redirect_to student_path(@student)
     else
-      redirect_to root_path
+      flash[:notice] = "Student was not created, something went terribly wrong..."
+      render 'new'
     end
   end
-  
+    
   def destroy
     @student.destroy
     redirect_to root_path
   end
   
+  def index
+#    if params[:search]
+#      @students = Student.find(:all, :conditions => ['name LIKE ?', "%#{params[:search]}%"])
+#    else
+#      @students = Student.all
+#    end
+    @students = Student.search(params[:search])
+    @student = Student.new 
+  end
+
   def show
-		@student = Student.find(params[:id]) 
+		@student = Student.find(params[:id])
+		@assignment = Assignment.new
+		@assignments = Assignment.where(:student_id => @student)
+		@active_assignments = @assignments.where(:active => true)
+		@inactive_assignments = @assignments.where(:active => false)
   end
   
   def update

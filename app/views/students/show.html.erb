@@ -1,82 +1,135 @@
-<table><tr><td>
-<h3><%= @student.name %></h3>
-<div class="student">
-<p>
-<h4>Assigned by: </h4>
-<ul>
-  <li><%= User.where(:id => @student.user_id).first.name %></li>
-</ul>
-</p>
-
-<p>
-<h4>Should be working on:</h4>
-<ul>
-  <li><%= @student.assignment%></li>
-</ul>
-</p>
-<% if @student.instructions? %>
-  <p>
-  <h4>Special Instructions:</h4>
-  <ul>
-    <li><%= @student.instructions%></li>
-  </ul>
-  </p>
-<% end %>
-<p>
-<h4>Should be attending on:</h4>
-      <ul>
-      <% if @student.mlunch? %>
-         <li>Monday during lunch</li>
+<h2><%= @student.name %></h2>
+<table>
+  <tr>
+    <td>
+      <h3>Assign <%= @student.name %> to Study Hall</h3>
+      <div>
+        <%= render 'shared/assn_form'%>
+      </div>
+    <td>
+    <td style="vertical-align: top">
+      <% unless @active_assignments.empty? %>
+      <h3>Active Assignments</h3>
+      <table class="students">  
+        <tr>
+          <th>&nbsp;</th>
+          <th>Assignment</th>
+          <th>Sessions</th>
+        </tr>  
+          <% @active_assignments.each do |assignment| %>
+          <tr>
+            <td class="student_inactivate">
+              <% if current_user.id == assignment.user_id %>
+                  <%= link_to "inactivate", assignment, 
+                    :method => :delete,
+                    :confirm => "Are you sure you want to deactivate this assignment?",
+                    :title => assignment.assn %>
+              <% end %>
+            </td>
+            <td class="student_assn">
+              <%= link_to assignment.assn, assignment_path(assignment) %><br />
+              <% if assignment.created_at <= (Time.now - 7.days) %>
+                <span class="timestamp_red">
+                  Created <%= time_ago_in_words(assignment.created_at)%> 
+                  ago<br />
+                </span>
+                <span class="timestamp">
+                  by <%= link_to assignment.user.name, users_path(assignment.user) %>
+                </span>
+              <% else %>
+                <span class="timestamp">
+                  Created <%= time_ago_in_words(assignment.created_at)%> 
+                  ago <br />
+                  by <%= link_to assignment.user.name, user_path(assignment.user) %>
+                </span>
+              <% end %>
+              
+            </td>
+            <td class="student_sessions">
+              <ul>
+                <% if assignment.mlunch? %><li>Monday during lunch</li><% end %>
+                <% if assignment.mafter? %><li>Monday after school</li><% end %>
+                <% if assignment.tlunch? %><li>Tuesday during lunch</li><% end %>
+                <% if assignment.tafter? %><li>Tuesday after school</li><% end %>
+                <% if assignment.wlunch? %><li>Wednesday during lunch</li><% end %>
+                <% if assignment.wafter? %><li>Wednesday after school</li><% end %>
+                <% if assignment.rlunch? %><li>Thursday during lunch</li><% end %>
+                <% if assignment.rafter? %><li>Thursday after school</li><% end %>
+                <% if assignment.flunch? %><li>Friday during lunch</li><% end %>
+                <% if assignment.fafter? %><li>Friday after school</li><% end %>
+              </ul>
+            </td>
+          <% end %>
+        </ul>
+      </table>
       <% end %>
-      <% if @student.mafter? %>
-        <li>Monday after school</li>
-      <% end %>
-      <% if @student.tlunch? %>
-        <li>Tuesday during lunch</li>
-      <% end %>
-      <% if @student.tafter? %>
-        <li>Tuesday after school</li>
-      <% end %>
-      <% if @student.wlunch? %>
-         <li>Wednesday during lunch</li>
-      <% end %>
-      <% if @student.wafter? %>
-        <li>Wednesday after school</li>
-      <% end %>
-      <% if @student.rlunch? %>
-        <li>Thursday during lunch</li>
-      <% end %>
-      <% if @student.rafter? %>
-        <li>Thursday after school</li>
-      <% end %>
-      <% if @student.flunch? %>
-        <li>Friday during lunch</li>
-      <% end %>
-      <% if @student.fafter? %>
-        <li>Friday after school</li>
-      <% end %>
-      </ul>
-</p>      
-<% if @student.created_at <= (Time.now - 7.days) %>
-  <p style="color: red">Created <%= time_ago_in_words(@student.created_at)%> ago.</p>
-<% else %>
-  <p>Created <%= time_ago_in_words(@student.created_at) %> ago.</p>
-<% end %>
-<% if current_user.id == @student.user_id %>
-  <%= link_to "delete", @student, 
-            :method => :delete,
-            :confirm => "You sure?",
-            :title => @student.name %>
-<% end %>
-
-</div>
-</td>
-<% if current_user.id == @student.user_id %>
-<td>
-<div style="float: right; border-left: 1px">
-  <%= render 'shared/student_update_form' %>
-</div>
-</td>
-<% end %>
-</tr>
+    </td>
+  </tr>
 </table>
+
+<% unless @inactive_assignments.empty? %>
+<h3>Inactive Assignments</h3>
+<table class="students">
+  <tr>
+    <th>Assignment</th>
+    <th>Teacher</th>
+    <th>Date Created</th>
+  </tr>
+  <% @inactive_assignments.each do |assignment| %>
+    <tr>
+      <td class="student_assn"><%= assignment.assn %></td>
+      <td class="student_name"><%= assignment.user.name %></td>
+      <td class="student_sessions"><%= assignment.created_at.strftime('%d %b %Y') %></td>
+    </tr>      
+  <% end %>
+</table>
+<% end %>
+
+
+
+<% if false %>
+<% unless @assignments.empty? %>
+<table>
+  <tr>
+    <th>&nbsp;</th>
+    <th>Assignment</th>
+    <th>Assigned by</th>
+    <th>Dates of attendance</th>
+  </tr>
+  <% @assignments.each do |assignment| %>
+  <tr>
+    <td>
+      <% if current_user.id == assignment.user_id %>
+      <%= link_to "inactivate", assignment, 
+              :method => :delete,
+              :confirm => "You sure?",
+              :title => assignment.assn %>
+      <% end %>
+    </td>
+    <td>
+      <%= assignment.assn %>
+      <% if assignment.created_at <= (Time.now - 7.days) %>
+        <span class="timestamp_red">Created <%= time_ago_in_words(assignment.created_at)%> ago.</span>
+      <% else %>
+        <span class="timestamp">Created <%= time_ago_in_words(assignment.created_at)%> ago.</span>
+      <% end %>
+    </td>
+    <td><%= assignment.user.name%></td>
+    <td>
+      <ul>
+        <% if assignment.mlunch? %><li>Monday during lunch</li><% end %>
+        <% if assignment.mafter? %><li>Monday after school</li><% end %>
+        <% if assignment.tlunch? %><li>Tuesday during lunch</li><% end %>
+        <% if assignment.tafter? %><li>Tuesday after school</li><% end %>
+        <% if assignment.wlunch? %><li>Wednesday during lunch</li><% end %>
+        <% if assignment.wafter? %><li>Wednesday after school</li><% end %>
+        <% if assignment.rlunch? %><li>Thursday during lunch</li><% end %>
+        <% if assignment.rafter? %><li>Thursday after school</li><% end %>
+        <% if assignment.flunch? %><li>Friday during lunch</li><% end %>
+        <% if assignment.fafter? %><li>Friday after school</li><% end %>
+        </ul>
+      </td>
+  <% end %>
+  </table>
+<% end %>
+<% end %>

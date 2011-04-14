@@ -1,0 +1,21 @@
+<% unless @students.empty? %>
+<table class="students">
+    <tr>
+      <th>Student</th>
+      <th>
+      </th>
+    </tr>
+    <% @students.each do |student| %>
+      <tr>
+        <td class="student_name"><%= link_to student.name, student_path(student) %></td>
+        <td class="student_assn">
+          <% if Assignment.where(:student_id => student, :active => true).empty? %>
+            No Assignments
+          <% else %>
+            Currently assigned to study hall
+          <% end %>  
+        </td>
+      </tr>
+    <% end %>
+</table>
+<% end %>

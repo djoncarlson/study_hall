@@ -1,17 +1,39 @@
-<header>
+<header class="round">
 
   <nav class="round">
-    <table><tr><td align="left">
-    <%=  link_to logo, root_path %></td>
-  	<td align="right"><ul>
-  		<% if signed_in? %>
-    		<li><%= link_to "Teachers", users_path %></li>
-    		<li><%= link_to "My Students", current_user %></li>
-    		<li><%= link_to "All Students", root_path %></li>
-    		<li><%= link_to "Sign out", signout_path, :method => :delete %></li>
-  		<% else %>
-    		<li><%= link_to "Sign in", signin_path %></li>
-      <% end %>
-  	</ul></td></table>
+    <table class="round">
+      <tr class="middle">
+        <td class="img">
+          <%=  link_to logo, root_path %>
+        </td>
+        
+        <td class="links middle right round"><ul>
+      		<% if signed_in? %>
+        		<li><%= link_to "Teachers", users_path %></li>
+        		<li><%= link_to "My Students", current_user %></li>
+        		<li><%= link_to "All Students", students_path %></li>
+        		<li><%= link_to "All Assignments", assignments_path %></li>
+        		<li><%= link_to "Sign out", signout_path, :method => :delete %></li>
+      		<% else %>
+        		<li><%= link_to "Sign in", signin_path %></li>
+          <% end %>
+      	</ul></td>
+        
+      </tr>
+    </table>
   </nav>
 </header>
+
+<!--   	 
+
+       		<% if signed_in? %>
+        		<td class="bottom right round"><%= link_to "Teachers", users_path %></td>
+        		<td class="bottom right round"><%= link_to "My Students", current_user %></td>
+        		<td class="bottom right round"><%= link_to "All Students", students_path %></td>
+        		<td class="bottom right round"><%= link_to "All Assignments", assignments_path %></td>
+        		<td class="bottom right round"><%= link_to "Sign out", signout_path, :method => :delete %></td>
+      		<% else %>
+        		<td><%= link_to "Sign in", signin_path %></td>
+          <% end %>
+      	</td>   
+-->

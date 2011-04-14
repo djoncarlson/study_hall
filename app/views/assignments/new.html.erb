@@ -1,9 +1,16 @@
-<%= form_for @student do |f| %>
+<h1>Assignments#new</h1>
+<p>Find me in app/views/assignments/new.html.erb</p>
+<%= form_for @assignment do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
-  <div class="field">
-    <%= f.label "Student Name" %><br />
-    <%= f.text_field :name %>
+  <div>
+    <%= f.hidden_field :student_id, :value => @student.id %>
+    <%= f.hidden_field :active, :value => 1 %>
   </div>
+  <div class="field">
+    <%= f.label "Assignment" %><br />
+    <%= f.text_field :assn %>
+  </div>
+
   <div class="field">
     <%= f.label "Special instructions (optional)"%><br/>
     <%= f.text_field :instructions %>
@@ -36,7 +43,7 @@
     </table>
 
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit %>
   </div>
 
 <% end %>

@@ -6,12 +6,18 @@ class UsersController < ApplicationController
   def index
     @title = "All users"
     @users = User.paginate(:page => params[:page])
+ 		@assignments = Assignment.where(:user_id => @user)
+		@active_assignments = @assignments.where(:active => true)
+		@inactive_assignments = @assignments.where(:active => false)
   end
   
 	def show
 		@user = User.find(params[:id])
-    @students = @user.students.paginate(:page => params[:page])
+#    @students = @user.students.paginate(:page => params[:page])
 		@title = @user.name
+		@assignments = Assignment.where(:user_id => @user)
+		@active_assignments = @assignments.where(:active => true)
+		@inactive_assignments = @assignments.where(:active => false)
 	end
 	
   def new

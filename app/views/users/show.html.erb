@@ -1,29 +1,74 @@
-<h3>
-	      <%= @user.name %>
-      </h3>
-  <% if @user.students.empty? %>
-<p>
-    You have no students assigned to study hall.<br />
-    Want to <%=link_to "add one", root_path %>?
-</p>
-  <% else %>
-
-    <table class="students">
-    <tr>
-      <td class="student_del">&nbsp;</td>
-      <td class="student_name">
-        <strong>Student</strong>
+<table>
+  <tr>
+  <td>
+    <%= @user.name %> (<%= @user.email%>)
+    <% if @user == current_user %>
+      <%= link_to "edit", edit_user_path%>
       </td>
-      <td class="student_assn">
-        <strong>Assignment</strong>
+      <td style="align-right">
+      <%= link_to "Add a student", students_path, :class => "small_dark_blue_button round" %>
       </td>
-      <td class="student_name">
-        <strong>Sessions</strong>
+    <% else %>
       </td>
-    </tr>
-      <%= render @students %>
-    </table>
-     <%= will_paginate @students %>
+    <% end %>
+  </tr>
+</table>
+<% unless @active_assignments.empty? %>
+<h3>Active Assignments</h3>
+<table class="students">
+  <tr>
+    <th>&nbsp;</th>
+    <th>Student</th>
+    <th>Assignment</th>
+    <th>Sessions</th>
+  </tr>
+  <% @active_assignments.each do |assignment| %>
+  <tr>    
+    <td class="student_inactivate">
+      <% if current_user.id == assignment.user_id %>
+        <%= link_to "inactivate", assignment, 
+                  :method => :delete,
+                  :confirm => "You sure?",
+                  :title => assignment.assn %>
+      <% end %>
+      </td>
+      <td class="student_name"><%= link_to assignment.student.name, student_path(assignment.student) %></td>
+      <td class="student_assn"><%= link_to assignment.assn, assignment_path(assignment) %></td>
+      <td class="student_sessions">
+        <ul>
+          <% if assignment.mlunch? %><li>Monday during lunch</li><% end %>
+          <% if assignment.mafter? %><li>Monday after school</li><% end %>
+          <% if assignment.tlunch? %><li>Tuesday during lunch</li><% end %>
+          <% if assignment.tafter? %><li>Tuesday after school</li><% end %>
+          <% if assignment.wlunch? %><li>Wednesday during lunch</li><% end %>
+          <% if assignment.wafter? %><li>Wednesday after school</li><% end %>
+          <% if assignment.rlunch? %><li>Thursday during lunch</li><% end %>
+          <% if assignment.rafter? %><li>Thursday after school</li><% end %>
+          <% if assignment.flunch? %><li>Friday during lunch</li><% end %>
+          <% if assignment.fafter? %><li>Friday after school</li><% end %>
+        </ul>
+      </td>
+  </tr>
   <% end %>
+</table>
+<% end %>
 
+<% unless @inactive_assignments.empty? %>
+
+<table class="students">
+  <tr><td><h3>Inactive Assignments</h3></td></tr>
+  <tr>
+    <th>Student</th>
+    <th>Assignment</th>
+    <th>Created</th>
+  </tr>
+  <% @inactive_assignments.each do |assignment| %>
+  <tr>
+    <td class="student_name"><%= link_to assignment.student.name, student_path(assignment.student) %></td>
+    <td class="student_assn"><%= link_to assignment.assn, assignment_path(assignment) %></td>
+    <td class="student_sessions"><%= time_ago_in_words(assignment.created_at) %> ago</td>
+  </tr>
+  <% end %>
+</table>
+<% end %>
 

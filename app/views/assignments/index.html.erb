@@ -1,0 +1,36 @@
+<h2>All Assignments</h2>
+<% unless @assignments.empty? %>
+  <table>
+    <tr>
+      <th>&nbsp;</th>
+      <th>Assignment</th>
+      <th>Student</th>
+      <th>Teacher</th>
+    </tr>
+    <% @assignments.each do |assignment| %>
+      <tr>
+        <td>
+          <% if current_user.id == assignment.user_id %>
+            <% if assignment.active == true %>
+            <%= link_to "inactivate", assignment, 
+                :method => :delete,
+                :confirm => "You sure?",
+                :title => assignment.assn %>
+            <% else %>
+              Inactive
+            <% end %>
+          <% else %>
+            <% if assignment.active == true %>
+              Active
+            <% else %>
+              Inactive
+            <% end %>
+          <% end %>
+        </td>
+        <td><%= link_to assignment.assn, assignment_path(assignment) %></td>
+        <td><% unless assignment.student.nil? %><%= assignment.student.name %><% end %></td>
+        <td><% unless assignment.user.nil? %><%= assignment.user.name %><% end %></td>
+      </tr>
+  <% end %>
+  </table>
+<% end %>

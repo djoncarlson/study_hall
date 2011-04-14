@@ -1,9 +1,12 @@
 StudyHall::Application.routes.draw do
 
 
+  get "assignments/new"
+
 	resources :users
 	resources :sessions, :only => [:new, :create, :destroy]
-  resources :students, :only => [:show, :create, :destroy, :update, :edit]
+  resources :students
+  resources :assignments
 
   match '/signout',     :to => 'sessions#destroy'
   match '/students',    :to => 'students#index'

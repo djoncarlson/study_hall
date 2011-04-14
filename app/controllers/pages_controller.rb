@@ -2,8 +2,8 @@ class PagesController < ApplicationController
   def home
 		@title = "Home"
 		if signed_in?
-  		@student = Student.new
-  		@feed_items = current_user.feed(params[:attendance]).paginate(:page => params[:page])
+  		#@student = Student.new
+  		#@feed_items = current_user.feed(params[:attendance]).paginate(:page => params[:page])
 		  #@teacher = current_user.owner(params[:user_id])
 		end
   end
@@ -22,8 +22,7 @@ class PagesController < ApplicationController
 	
 	def attendance
     @title = "Attendance"
-    @section_list = current_user.fetch_students_for_attendance(params[:attendance])
-
+    #@section_list = current_user.fetch_students_for_attendance(params[:attendance])
   end
  
 

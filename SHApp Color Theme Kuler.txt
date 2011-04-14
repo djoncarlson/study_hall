@@ -1,0 +1,9 @@
+303740 - darkest blue
+326A8C - dark blue
+4F7CBD - mid blue
+A3BAD9 - lightest blue
+F2F2F2 - light grey fill
+
+A3BAD9303740
+
+e5ecf9 - old blueprint table row background

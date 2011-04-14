@@ -10,25 +10,37 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110406033730) do
+ActiveRecord::Schema.define(:version => 20110413102817) do
 
-  create_table "students", :force => true do |t|
-    t.string   "name"
-    t.text     "assignment"
-    t.text     "instructions"
+  create_table "assignments", :force => true do |t|
+    t.string   "assn"
+    t.string   "instructions"
     t.integer  "user_id"
+    t.integer  "student_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "active"
     t.boolean  "mlunch"
     t.boolean  "tlunch"
     t.boolean  "wlunch"
     t.boolean  "rlunch"
+    t.boolean  "flunch"
     t.boolean  "mafter"
     t.boolean  "tafter"
     t.boolean  "wafter"
     t.boolean  "rafter"
-    t.boolean  "flunch"
     t.boolean  "fafter"
+  end
+
+  add_index "assignments", ["student_id"], :name => "index_assignments_on_student_id"
+  add_index "assignments", ["user_id"], :name => "index_assignments_on_user_id"
+
+  create_table "students", :force => true do |t|
+    t.string   "name"
+    t.text     "instructions"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "students", ["user_id"], :name => "index_students_on_user_id"

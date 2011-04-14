@@ -1,9 +1,15 @@
 <h3>Teachers</h3>
 
-<%= will_paginate %>
-
 <ul class="users">
-    <%= render @users %>
+<% @users.each do |user| %>
+<li>
+  <%= link_to user.name, user %> has <%= pluralize(Assignment.where(:user_id => user, :active => true).count, 'participant') %> currently in study hall.
+  <% if current_user.admin? %>
+    <%= link_to "delete", user, :method => :delete, :confirm => "Are you sure?", :title => "Delete #{user.name}" %>
+  <% end %>
+</li>
+<% end %>
 </ul>
 
-<%= will_paginate %>
+
+

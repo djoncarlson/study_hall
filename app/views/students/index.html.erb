@@ -1,20 +1,18 @@
-<table class="students">
-    <tr>
-      <td class="student_name">
-        <strong>Teacher</strong>
-      </td>
-      <td class="student_name">
-        <strong>Student</strong>
-      </td>
-      <td class="student_assn">
-        <strong>Assignment</strong>      
-      </td>
-    </tr>
-        <% unless @students.empty? %>
-          <% @students.each do |student| %>
-            <tr><td><%= student.user.name %></td>
-            <td><%= student.name %></td>
-            <td><%= student.assignment %></td></tr>
-          <% end %>
-        <% end %>
+<h2>All Students</h2>
+<table>
+  <tr>
+    <td style="vertical-align: top">
+    </td>
+    <td>
+      <%= render 'shared/student_form'%>
+    </td>
+  </tr>
 </table>
+        <%= form_tag students_path, :method => 'get', :id => "student_search" do %>
+        <p>
+          <%= text_field_tag :search, params[:search] %>
+          <%= submit_tag "Search", :name=> nil %>
+        </p>
+      <% end %>
+
+<div id="students"><%= render 'students' %></div>

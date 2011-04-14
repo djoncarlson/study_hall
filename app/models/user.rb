@@ -1,14 +1,3 @@
-# == Schema Information
-# Schema version: 20110319122819
-#
-# Table name: users
-#
-#  id         :integer         not null, primary key
-#  name       :string(255)
-#  email      :string(255)
-#  created_at :datetime
-#  updated_at :datetime
-#
 require 'digest'
 class User < ActiveRecord::Base
   include ActiveModel::Validations
@@ -22,10 +11,9 @@ class User < ActiveRecord::Base
 	attr_accessor :password
   attr_accessible :name, :email, :password, :password_confirmation, :secretcode
 	
-	has_many :students, :dependent => :destroy
+  has_many :assignments
 	
 	email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-#  secret_regex = /(wexification)/i
 
 	validates :name, 	:presence => true,
 										:length => { :maximum => 50 }
