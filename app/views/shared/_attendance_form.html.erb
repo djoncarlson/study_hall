@@ -1,4 +1,4 @@
 <%= form_tag do %>
-  <%= select_tag(:attendance, options_for_select([['Monday - Lunch', 'mlunch'], ['Monday - After', 'mafter'], ['Tuesday - Lunch', 'tlunch'], ['Tuesday - After', 'tafter'], ['Wednesday - Lunch', 'wlunch'], ['Wednesday - After', 'wafter'], ['Thursday - Lunch', 'rlunch'], ['Thursday - After', 'rafter'], ['Friday - Lunch', 'flunch'], ['Friday - After', 'fafter']]))%>
+  <%= select_tag(:attendance_list, options_for_select([['Monday - Lunch', 'mlunch'], ['Monday - After', 'mafter'], ['Tuesday - Lunch', 'tlunch'], ['Tuesday - After', 'tafter'], ['Wednesday - Lunch', 'wlunch'], ['Wednesday - After', 'wafter'], ['Thursday - Lunch', 'rlunch'], ['Thursday - After', 'rafter'], ['Friday - Lunch', 'flunch'], ['Friday - After', 'fafter']]))%>
   <%= submit_tag("Submit")%>
 <% end %>

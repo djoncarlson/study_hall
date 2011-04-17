@@ -1,10 +1,12 @@
-<% unless @students.empty? %>
 <table class="students">
+<% if @students.empty? %>
+  <tr><td><h3>No students match search criteria</h3></td></tr>
+<% else %>
+
     <tr>
       <th>Student</th>
       <th>
       </th>
-    </tr>
     <% @students.each do |student| %>
       <tr>
         <td class="student_name"><%= link_to student.name, student_path(student) %></td>
@@ -17,5 +19,6 @@
         </td>
       </tr>
     <% end %>
-</table>
+
 <% end %>
+</table>

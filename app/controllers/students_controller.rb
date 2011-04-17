@@ -44,7 +44,7 @@ class StudentsController < ApplicationController
     @student = Student.find(params[:id])
     if @student.update_attributes(params[:student])
       flash[:success] = "Student updated"
-      redirect_to student_path(@student)
+      redirect_to @student
     else
       @title = "Edit student"
       render 'edit'
@@ -52,8 +52,10 @@ class StudentsController < ApplicationController
   end
   
   def edit
+    @student = Student.find(params[:id])
   end
   
+ 
   private
   
     def authorized_user

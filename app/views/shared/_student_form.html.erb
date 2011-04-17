@@ -1,8 +1,8 @@
 <%= form_for @student do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
-  <div class="field">
-    <%= f.label "Student name" %><br />
-    <%= f.text_field :name %>
+  <div>
+    <%= f.label "To add a student to the database enter the name below" %><br />
+    <%= f.text_field :name, :size => 26 %>
     <%= f.submit "Submit" %>
   </div>
 <% end %>

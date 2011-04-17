@@ -15,17 +15,17 @@ e5ecf9 - old blueprint table row background
 }
 
 body {
-	background: #4F7CBD;
+	background: #A3BAD9;
 }
 
 header {
 	padding-top: 20px;
-	background: #4F7CBD;
+/*	background: #4F7CBD; */
 }
 
 header img {
     width: 200px;
-	background: #4F7CBD;
+	background: #A3BAD9;
 /*	background: #fdfdfd;*/
 }
 
@@ -41,7 +41,7 @@ div.section h1 {
 
 nav table tbody {
 /*    background: #fdfdfd*/
-	background: #4F7CBD;
+	background: #A3BAD9;
 }
 
 nav table tr {
@@ -57,7 +57,7 @@ nav table tr td.links {
 }
 
 nav table tr td.img {
-    background: #4F7CBD;
+    background: #A3BAD9;
 }
 
 table tbody {
@@ -88,7 +88,7 @@ nav {
 }
 
 nav {
-	background: #4F7CBD;
+	background: #fdfdfd;
 /*	background-color: #Adfdfd;*/
 	padding: 0.5 0em;
     /*margin: 1em;*/
@@ -171,35 +171,45 @@ a.signin_button {
 }
 a.small_dark_blue_button {
 
+	margin-left: auto;
+	margin-right: auto;
+
 	display: block;
 	text-align: center;
-	width: 100px;
 	color: #F2F2F2;
+	width: 150px;
 	background: #326A8C;
 	font-size: 100%;
-	padding: 5px;
+	padding: 15px;
+	border: 1px;
 }
 
 a.small_mid_blue_button {
 
 	display: block;
 	text-align: center;
-	width: 100px;
+/*	width: 100px; */
 	color: #F2F2F2;
 	background: #4F7CBD;
 	font-size: 100%;
 	padding: 5px;
+	border: 1px;
+	border-color: #000000;
 }
 
 a.small_light_blue_button {
 
+	margin-left: auto;
+	margin-right: auto;
 	display: block;
-
-	width: 80px;
+    text-align: center;
+	width: 150px;    
 	color: #303740;
 	background: #A3BAD9;
 	font-size: 100%;
-	padding: 5px;
+	padding: 15px;
+	border: 1px;
+	border-color: #000000;
 }
 
 a.homepage_button {
@@ -323,6 +333,21 @@ table.form_holder tr {
     vertical-align: absolute;    
 }
 
+table.frontpage {
+    margin-top: 1em;
+    vertical-align: middle;
+}
+
+table.frontpage tr {
+    height: 20px;
+}
+
+table.frontpage tr td {
+    font-size: 150%;
+    
+}
+
+
 table.students {
     margin-top: 1em;
     vertical-align: bottom;
@@ -344,7 +369,7 @@ table.students tr td.student_inactivate  {
     border-top: 1px solid #ccc;
     vertical-align: top;
     padding-top: 1px;
-    width: 10%;
+    width: 5%;
     font-size: 85%;
 }
 

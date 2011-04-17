@@ -1,32 +1,25 @@
 <% if signed_in? %>
-<table><tr><td><%= link_to "Attendance Form", root_path, :class => "homepage_button round" %></td>
-<td><%= link_to "Add a student to study hall", root_path, :class => "homepage_button round" %></td></tr></table>
+<table class="frontpage">
+  <tr>
+    <td><%= link_to "Attendance Form", '/attendance', :class => "small_dark_blue_button round" %></td>
+    <td><%= link_to "My Students", user_path(current_user), :class => "small_light_blue_button round" %></td>
+  </tr>
+</table>
 
-<% if false %><!--  <table class="front" summary="For signed-in users">
-    <tr>
-      <td style="vertical-align: top">
-        <h3 class="student">Assign Study Hall</h3>
-        <%= render 'shared/student_form' %>
-      </td>
-      <td style="vertical-align: top">
-        <div align="left">
-          <% if @feed_items.any? %>
-          <h3 class="student">Current Study Hall Participants</h3>
-          <%= render 'shared/attendance_form' %>
-          <div id="student_list">
-          <%= render 'shared/feed' %>
-          </div>
-          <% else %>
-          <h3 class="student">No Participants
-          <%= render 'shared/attendance_form' %>
-          <% end %>
-        </div>
-      </td>
-    </tr>
-  </table> --><% end %>
+
 <% else %>
   <div align="center">
   <h2>Academia Cotopaxi Study Hall Manager</h2> 
   </div>
-  <%= link_to "Sign in", signin_path, :class => "signin_button round" %>
+<table class="frontpage">
+  <tr>
+    <td>  
+      <%= link_to "Sign in", signin_path, :class => "small_dark_blue_button round" %>
+    </td>
+    <td>
+      <%= link_to "Sign up here", signup_path, :class => "small_light_blue_button round"%>
+    </td>
+  </tr>
+</table>
+
 <% end %>

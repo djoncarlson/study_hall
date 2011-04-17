@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation, :secretcode
 	
   has_many :assignments
+  has_many :attendances
 	
 	email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
@@ -53,9 +54,63 @@ class User < ActiveRecord::Base
   end
   
   def fetch_students_for_attendance(section)
-    return Student.where(section => true)
+    if section.nil?
+      return Assignment.where(:active => true)
+    else
+      return Assignment.where(section => true, :active => true)
+    end
   end
-	
+  
+  def convert_section_to_string(section)
+    if section.nil?
+      return "All Active Participants"
+    else
+      if section.first == 'm'
+        day = 'Monday'
+      elsif section.first == 't'        
+        day = 'Tuesday'
+      elsif section.first == 'w'
+        day = 'Wednesday'
+      elsif section.first == 'r'
+        day = 'Thursday'
+      else section.first == 'f'
+        day = 'Friday'
+      end
+      
+      if section[1] == 'l'
+        time = ' at Lunch'
+      else
+        time = ' After School'      
+      end
+      return day + time
+      
+    end
+  end
+  
+  def fetch_session_now()
+    hour = Time.now().hour
+    day = Time.now().strftime('%A').first.downcase
+    if 10 <= hour && hour <= 14
+      session = "lunch"
+    else
+      session = "after"
+    end
+    if day == "t"
+      if Time.now().strftime('%A') == "Tuesday"
+        day = "t"
+      else
+        day = "r"
+      end
+    end
+    section = day + session
+    
+    return section 
+  end
+  
+  def get_email_list(list_of_assn_id)
+  end    
+
+
 	private
 		def encrypt_password
 			self.salt = make_salt if new_record?

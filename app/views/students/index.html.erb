@@ -1,18 +1,15 @@
-<h2>All Students</h2>
-<table>
-  <tr>
-    <td style="vertical-align: top">
-    </td>
-    <td>
-      <%= render 'shared/student_form'%>
-    </td>
-  </tr>
-</table>
+<p class="right">
+  <%= render 'shared/student_form'%>
+</p>
+
+<hr />
+
         <%= form_tag students_path, :method => 'get', :id => "student_search" do %>
-        <p>
-          <%= text_field_tag :search, params[:search] %>
-          <%= submit_tag "Search", :name=> nil %>
-        </p>
-      <% end %>
+          <p class="right">
+            <%= text_field_tag :search, params[:search], :placeholder => "Search by name..." %>
+          </p>
+        <% end %>
 
 <div id="students"><%= render 'students' %></div>
+
+

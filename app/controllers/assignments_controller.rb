@@ -22,6 +22,7 @@ class AssignmentsController < ApplicationController
   
   def show
     @assignment = Assignment.find(params[:id])
+    @student = @assignment.student
   end
   
   def index
@@ -31,12 +32,14 @@ class AssignmentsController < ApplicationController
   end
   
   def update
-#    @assignment = Assignment.find(params[:id])
-#    if @assignment.update_attributes(params[:assignment])
-#      flash[:success] = "Assignments updated"
-#      redirect_to assignment_path(@assignment)
-#    else
-#    end
+    @assignment = Assignment.find(params[:id])
+    if @assignment.update_attributes(params[:assignment])
+      flash[:success] = "Assignments updated"
+      redirect_to assignment_path(@assignment)
+    else
+      flash[:notice] = "Something went wrong"
+      redirect_to assignment_path(@assignment)
+    end
   end
   
   def inactivate

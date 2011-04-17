@@ -1,11 +1,11 @@
-<h2><%= @student.name %></h2>
+<h3><%= @student.name %></h3>
+<%= link_to "Edit", edit_student_path %> student infomation
+<hr />
 <table>
   <tr>
     <td>
       <h3>Assign <%= @student.name %> to Study Hall</h3>
-      <div>
-        <%= render 'shared/assn_form'%>
-      </div>
+      <%= render 'shared/assn_form'%>
     <td>
     <td style="vertical-align: top">
       <% unless @active_assignments.empty? %>

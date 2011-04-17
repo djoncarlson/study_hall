@@ -3,6 +3,7 @@ $(function() {
         $.get($("#student_search").attr("action"), $("#student_search").serialize(), null, "script");
         return false;
     });
+
 });
 
 // application.js

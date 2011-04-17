@@ -1,0 +1,8 @@
+<% @attendance.missingstudents.split.each do |asn_id| %>
+  <%= asn_id %>did not show up<br />
+<% end %>
+<% unless @attendance.user.name.empty? %><%= @attendance.user.name %>sent the attendance<% end %>
+
+<% @assnlist.each do |assn| %>
+  <%= assn %><br />
+  <% end %>

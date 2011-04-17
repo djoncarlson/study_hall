@@ -1,7 +1,5 @@
+<% if current_user == nil %>
 <h2>Sign up</h2>
-
-<p>Todo: check if user is signed in.</p>
-
 <%= form_for(@user) do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
   <div class="field">
@@ -27,4 +25,9 @@
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
+<% end %>
+
+<% else %>
+<p>
+Please <%= link_to "sign out", signout_path %> first.</p>
 <% end %>

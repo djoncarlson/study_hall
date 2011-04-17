@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>HintValue</title>
+<link rel="stylesheet" type="text/css" href="style.css" />
+<script type="text/javascript" src="prototype.js"></script>
+<script type="text/javascript" src="hintvalue.js"></script>
+<script type="text/javascript">
+	var fb;
+	document.observe('dom:loaded', function(){
+		new HintValue('text', {value: "Name"});
+		new HintValue('password', {value: "Password"});
+		new HintValue('textarea', {value: "Type text here"});
+		
+		new HintValue('text2', {className: "default"});
+		new HintValue('password2', {className: "default"});
+		new HintValue('textarea2', {className: "default"});	
+		
+		$$('.showsource').each(function(it){
+			it.observe('click', function(ev){
+				ev.element().next().toggle();
+			})
+			it.next().hide();
+		});			
+	});
+</script>
+<style type="text/css">
+.empty 
+{
+	text-align:center;
+	color:#ccc;
+}
+.default
+{
+	color:#ccc;
+}
+.showsource
+{
+	cursor:pointer;
+}
+</style>
+
+</head>
+<body>
+<div id="wrapper">
+<h1>HintValue</h1>
+<div class="chapter" id="intro"><h2>Intro</h2>
+<p>HintValue is a prototype based class that gives your text/password fields or your textareas a default value. If the user clicks on the element the default value is removed and the use is ready to type. Just have a look at the demos.</p>
+</div>
+<div class="chapter" id="intro"><h2>Features</h2>
+<ul>
+	<li>determines the default value or you can set your own default value</li>
+	<li>the value is removed if the user clicks on the element or tabs into it</li>
+	<li>if the user leaves the field empty the default value is filled in again</li>
+	<li>Use it on text inputs, password fields or textareas</li>
+</ul>
+</div>
+<div class="chapter" id="demos"><h2>Demos</h2>
+<p>Here are some demo fields with a HintValue</p>
+<form action="#" class="demo_container">
+<fieldset><legend>A simple input type="text"</legend>
+<input type="text" name="name" id="text" value="" /><br />
+<span class="showsource">show example source</span>
+<div class="code"> 
+  <pre class="html">HTML:
+&lt;input type="text" name="name" id="text" /&gt;
+CSS:
+.empty { color:#ccc; text-align:center; }
+JS:
+new HintValue('text', { defaultValue: "Name" });
+  </pre>
+</div>
+</fieldset>
+<fieldset><legend>Another input type="text"</legend>
+<input type="text" name="name" id="text2" value="default value" /><br />
+<span class="showsource">show example source</span>
+<div class="code"> 
+  <pre class="html">HTML:
+&lt;input type="text" name="name" id="text2" value="default value" /&gt;
+CSS:
+.default { color:#ccc; }
+JS:
+new HintValue('text2', { defaultClassName: "default" });
+  </pre>
+</div>
+</fieldset>
+<br style="clear:both">
+<fieldset><legend>A simple input type="password"</legend>
+<input type="password" name="password" id="password" value="" />
+</fieldset>
+<fieldset><legend>Anotehr input type="password"</legend>
+<input type="password" name="password" id="password2" value="default value" />
+</fieldset>
+<br style="clear:both">
+<fieldset><legend>A textarea</legend>
+<textarea name="textarea" id="textarea"></textarea>
+</fieldset>
+<fieldset><legend>Another textarea</legend>
+<textarea name="textarea" id="textarea2">default value</textarea>
+</fieldset>
+<br style="clear:both">
+</form>			
+</div>
+
+
+<div class="chapter" id="installation"><h2>Installation</h2>
+<p>HintValue is build upon the JavaScript framework Prototype. You can <a href="http://prototypejs.org">grab it here</a> or include it directly via the <a href='http://code.google.com/apis/ajaxlibs/documentation/index.html#prototype' target='_blank'>Google AJAX Libraries API</a>. Just include Prototype and hintvalue.js</p>
+<p>It's as simple as this:</p>
+	<div class="code"> 
+      <pre class="html">
+&lt;script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/prototype/1.6.0.3/prototype.js'&gt;&lt;/script&gt;
+&lt;script type='text/javascript' src='/hintvalue.js'&gt;&lt;/script&gt;</pre>
+	</div>
+</div>
+
+
+<div class="chapter" id="howtouse"><h2>How to use HintValue</h2>
+<p>For each input/textarea that you want a hint/default value just call HintValue:</p>
+	<div class="code"> 
+      <pre class="js"> // call it with the id of your input/textarea
+new HintValue('id_of_element');
+// or call it with an element as parameter
+var element = $('myinput');
+new HintValue(element);</pre>
+	</div>
+<p>
+If you want your input/textarea to look differently when the default/hint value is displayed you can use the ".empty" css-class. HintValue automatically adds the ".empty" class to the element when the default value is displayed:</p>
+	<div class="code"> 
+      <pre class="code">new HintValue('id_of_element');
+      //CSS:
+      .empty { color:#ccc; text-align:center; }</pre>
+	</div>
+<p>With the "className" option you can use any other classname for this, like so:</p>	
+	<div class="code"> 
+      <pre class="code">new HintValue('id_of_element', {className: "default_value");
+      //CSS:
+      .default_value { color:#ccc; text-align:center; }</pre>
+	</div>
+<p>By default HintValue takes the value-attribute of your input and takes this text as the default value. For people with deactivated JavaScript this is not optimal. They would have to remove the default value by hand. If you leave your value-attribute empty and use the "value" option, HintValue automatically inserts this as the defaultValue:</p>
+	<div class="code"> 
+      <pre class="code">new HintValue('id_of_element', {value: "This text get's inserted");</pre>
+	</div>
+<p>Just have a look at the source code of the demos above.</p>
+
+</div>
+
+
+
+<div class="chapter" id="options"><h2>HintValue options and API</h2>
+<p>HintValue takes two parameters. The first is expected to be an ID of a textbox/input or the element itself. The second is an option hash:</p>
+	<div class="code"> 
+      <pre class="js">new HintValue('id_or_element', {
+	value: false,
+	className: "empty"
+});</pre>
+	</div>
+<h3>Options</h3>	
+<div class="subchapter">	
+<h4>value</h4>
+The default/hint value for your element. You can use this instead of specifying the value in the value="xyz" attribute of your element.
+	<div class="code"> 
+      <pre class="js">new HintValue('id_or_element', {value: 'defaultvalue'});</pre>
+	</div>	
+</div>
+<div class="subchapter">
+<h4>className</h4>
+HintValue adds a class to your element when the default/hint value is displayed. So you can style your default-value. By default the classname "empty" is used. You can however pass in any other classname:
+	<div class="code"> 
+      <pre class="js">new HintValue('id_or_element', {className: "xyz"});
+new HintValue('id_or_element', {className: "default", value:"type here"});</pre>
+	</div>	
+</div>
+</div>
+
+
+<div class="chapter" id="license">
+<h2>License</h2>
+Just grab it and use it...free.
+</div>
+
+<div class="chapter" id="download">
+<h2>Download</h2>
+<a href="http://functino.com/?dl_id=3" style="font-weight:bold; font-size:17px; text-decoration:underline;">Download hintvalue.zip</a>
+</div>
+
+<div class="chapter" id="contact">
+<h2>Contact</h2>
+If you need help or have features requests feel free to comment to this blog post: <a href="http://functino.com/2009/02/setting-a-visible-default-value-for-text-and-password-inputs-as-well-as-textareas-empty-on-click">Setting a visible default value for text and password inputs as well as textareas - empty on click</a>.
+</div>
+
+
+</div>
+</body>
+</html>

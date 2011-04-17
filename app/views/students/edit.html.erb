@@ -1,3 +1,9 @@
-<h1>Edit Student</h1>
-<%= form_for(@student) do |f| %>
+<h2>Edit Student</h2>
+<%= form_for @student do |f| %>
+  <%= render 'shared/error_messages', :object => f.object %>
+  <div>
+    <%= f.label "Update student name below" %><br />
+    <%= f.text_field :name, :size => 26 %>
+    <%= f.submit %>
+  </div>
 <% end %>

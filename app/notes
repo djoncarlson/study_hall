@@ -1,0 +1,11 @@
+new attendance record
+belongs to User
+so user has many attendance records
+user_id
+(attendance) id
+some string that lists out assignment id's that were absent
+timestamp info: created_at
+the session that this was for
+
+
+rails generate mailer Notifier order_received order_shipped
