@@ -9,7 +9,7 @@ StudyHall::Application.configure do
   # Log error messages when you accidentally call methods on nil.
   config.whiny_nils = true
 
-  config.action_mailer.delivery_method = :test
+
 
   # Show full error reports and disable caching
   config.consider_all_requests_local       = true
@@ -24,6 +24,19 @@ StudyHall::Application.configure do
 
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
+
+#  config.action_mailer.delivery_method = :test
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address => "smtp.gmail.com",
+    :port => 587,
+    :domain => "gmail.com",
+    :authentication => "plain",
+    :user_name => "djoncarlson",
+    :password => "fuk1juk1",
+    :enable_starttls_auto => true
+  } 
+
 end
 
 

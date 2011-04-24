@@ -1,3 +1,13 @@
-Notifier#attendance_taken
+Attendance record for <%= @attendance.section.downcase %>
 
-<%= @greeting %>, find me in app/views/app/views/notifier/attendance_taken.text.erb
+Created on <%= @attendance.created_at.strftime('%d %b %Y') %> by <%= @attendance.user.name %>
+
+<% if @assignment_array.empty? %>
+  No missing students in this attendance record.
+<% else %>
+  The following students did not show up to study hall:
+    <% @assignment_array.each do |assignment| %>
+      <%= assignment.student.name %> was supposed to complete: "<%= assignment.assn %>" for <%= assignment.user.name %><br />
+  <% end %>
+<% end %>
+    

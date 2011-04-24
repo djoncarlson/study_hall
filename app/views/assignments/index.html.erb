@@ -8,6 +8,7 @@
       <th>Teacher</th>
       <th>Created</th>
     </tr>
+    <%= will_paginate @assignments %>
     <% @assignments.each do |assignment| %>
       <tr>
         <td class="student_inactivate">

@@ -12,8 +12,9 @@
       <th>Assignment</th>
     </tr>
     <%= form_tag('/attendances') do %>
-      <%= hidden_field(:user_id, :value => current_user.id )%>
-      <%= hidden_field(:section, :value => @session_in_words)%>
+      <%= hidden_field(:user_id, current_user.id )%>
+      <%= hidden_field(:section, @session_in_words)%>
+
       <% @attendance_list.each do |assignment| %>
         <tr>
           <td class="student_inactivate"><%= check_box_tag('missingstudents[]', assignment.id) %></td>

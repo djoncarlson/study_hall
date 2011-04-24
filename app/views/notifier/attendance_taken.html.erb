@@ -12,20 +12,8 @@
   <p>The following students did not show up to study hall:
   <ul>
   <% @assignment_array.each do |assignment| %>
-    <li><%= assignment.student.name %> had to complete: <%= assignment.assn %> for <%= assignment.user.name %></li>
+    <li><%= assignment.student.name %> was supposed to complete: "<%= assignment.assn %>" for <%= assignment.user.name %></li>
   <% end %>
   </ul></p>
-<% end %>
-
-<% if @email_array.empty? %>
-  <p>No emails will be sent to teachers</p>
-<% else %>
-  <p>The following emails addresses will recieve a message</p>
-  <ul>
-    <% @email_array.each do |email| %>
-    <li><%= email %></li>
-    <% end %>
-  </ul>
-  </p>
 <% end %>
     

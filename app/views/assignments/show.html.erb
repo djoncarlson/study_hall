@@ -1,16 +1,26 @@
 <table>
 <tr>
 <td style="vertical-align: top">
-<strong><%= @assignment.student.name %></strong><br />
+<strong><h3><%= @assignment.student.name %></h3></strong><br />
 <strong>Assignment:</strong> <%= @assignment.assn%><br />
 <strong>Teacher:</strong> <%= @assignment.user.name %><br />
-<strong>Created:</strong> <%= time_ago_in_words(@assignment.created_at)%> ago
-<% if current_user.id == @assignment.user_id %>
-<br />
-You can <%= link_to "Inactivate", @assignment, 
+<strong>Created:</strong> <%= time_ago_in_words(@assignment.created_at)%> ago on <%= @assignment.updated_at.strftime('%d %b %Y') %>
+<p>
+  This assignment 
+    <% if @assignment.active == true %>
+       is active.
+    <% else %>
+      was inactivated <%= time_ago_in_words(@assignment.updated_at) %> ago on <%= @assignment.updated_at.strftime('%d %b %Y') %>.
+    <% end %>
+</p>
+
+<% if current_user.id == @assignment.user_id && @assignment.active == true %>
+<p>
+You can <%= link_to "inactivate", @assignment, 
       :method => :delete,
       :confirm => "Are you sure you want to deactivate this assignment?",
       :title => @assignment.assn %> this assignment when it is complete.
+</p>
 </td>
 <td><%= render 'shared/assn_form'%></td>
 <% else %>

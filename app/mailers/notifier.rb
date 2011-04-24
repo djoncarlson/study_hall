@@ -1,14 +1,14 @@
 class Notifier < ActionMailer::Base
-  default :from => "from@example.com"
+  default :from => "djoncarlson@gmail.com", :to => "ewexler@cotopaxi.k12.ec"
 
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.notifier.attendance_taken.subject
-  #
-  def attendance_taken
-    @greeting = "Hi"
+  def attendance_taken(attendance_record)
+    @attendance = attendance_record
 
-    mail :to => "to@example.org"
+#    @assnlist = Attendance.list_of_assn_id(attendance_record)
+    @assignment_array = Assignment.array_of_assignments(@attendance.missingstudents)
+    @email_array = Assignment.array_of_emails(@assignment_array)
+    
+    mail :cc => @email_array, :subject => "Study Hall Attendance"
+
   end
 end
