@@ -8,7 +8,7 @@ class Student < ActiveRecord::Base
   
   def self.search(search)
     if(search)
-      where('name LIKE ?', "%#{search}%")
+      where('upper(name) LIKE upper(?)', "%#{search}%")
     else
       scoped
     end
