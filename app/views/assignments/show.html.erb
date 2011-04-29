@@ -1,10 +1,12 @@
 <table>
 <tr>
 <td style="vertical-align: top">
-<strong><h3><%= @assignment.student.name %></h3></strong><br />
+<p><strong><h3><%= @assignment.student.name %></h3></strong><br />
 <strong>Assignment:</strong> <%= @assignment.assn%><br />
-<strong>Teacher:</strong> <%= @assignment.user.name %><br />
-<strong>Created:</strong> <%= time_ago_in_words(@assignment.created_at)%> ago on <%= @assignment.updated_at.strftime('%d %b %Y') %>
+<strong>Special Instructions:</strong><% if @assignment.instructions != "" %><%= @assignment.instructions %><% else %> None<% end %><br />
+</p>
+<p><strong>Teacher:</strong> <%= @assignment.user.name %><br />
+<strong>Created:</strong> <%= time_ago_in_words(@assignment.created_at)%> ago on <%= @assignment.updated_at.strftime('%d %b %Y') %></p>
 <p>
   This assignment 
     <% if @assignment.active == true %>
@@ -16,7 +18,7 @@
 
 <% if current_user.id == @assignment.user_id && @assignment.active == true %>
 <p>
-You can <%= link_to "inactivate", @assignment, 
+<%= link_to "Inactivate", @assignment, 
       :method => :delete,
       :confirm => "Are you sure you want to deactivate this assignment?",
       :title => @assignment.assn %> this assignment when it is complete.
