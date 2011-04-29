@@ -9,7 +9,7 @@
     <td>
     <td style="vertical-align: top">
       <% unless @active_assignments.empty? %>
-      <h3>Active Assignments</h3>
+      <h3>Active Assignments - <%= @active_assignments.count %></h3>
       <table class="students">  
         <tr>
           <th>&nbsp;</th>
@@ -68,7 +68,7 @@
 </table>
 
 <% unless @inactive_assignments.empty? %>
-<h3>Inactive Assignments</h3>
+<h3>Inactive Assignments - <%= @inactive_assignments.count %></h3>
 <table class="students">
   <tr>
     <th>Assignment</th>

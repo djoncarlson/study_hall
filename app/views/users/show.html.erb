@@ -16,7 +16,7 @@
 <% unless @active_assignments.empty? %>
 <hr />
 <table class="students">
-  <tr><th colspan="3"><h3>Active Study Hall Assignments</h3></th></tr>
+  <tr><th colspan="3"><h3>Active Study Hall Assignments - <%= @active_assignments.count%></h3></th></tr>
   <tr>
     <th>&nbsp;</th>
     <th>Student</th>
@@ -56,7 +56,7 @@
 
 <% unless @inactive_assignments.empty? %>
 <table class="students">
-  <tr><th colspan="3"><h3>Inactive Assignments</h3></th></tr> 
+  <tr><th colspan="3"><h3>Inactive Assignments - <%= @inactive_assignments.count%></h3></th></tr> 
   <tr>
     <th>&nbsp;</th>
     <th>Student</th>
