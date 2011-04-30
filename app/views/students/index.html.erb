@@ -6,7 +6,7 @@
 
         <%= form_tag students_path, :method => 'get', :id => "student_search" do %>
           <p class="right">
-          <!--[if lt IE 9]>Search:<![endif]-->
+          <!--[if lte IE 9]>Search:<![endif]-->
             <%= text_field_tag :search, params[:search], :placeholder => " Search by name..." %>
           </p>
         <% end %>
