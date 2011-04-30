@@ -24,7 +24,7 @@ class AttendancesController < ApplicationController
     @attendance.all = params[:all_ids]
     
     if @attendance.save
-      #Notifier.attendance_taken(@attendance).deliver
+      Notifier.attendance_taken(@attendance).deliver
       flash[:success] = "Attendance record created"
       redirect_to attendance_path(@attendance)
     else

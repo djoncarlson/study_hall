@@ -1,13 +1,20 @@
 Attendance record for <%= @attendance.section.downcase %>
 
-Created on <%= @attendance.created_at.strftime('%d %b %Y') %> by <%= @attendance.user.name %>
-
-<% if @assignment_array.empty? %>
-  No missing students in this attendance record.
+Created <%= @attendance.created_at.strftime('%d %b %Y') %> by <%= @attendance.user.name %>
+<% if @allassignment_array.empty? %>
+  No students were assigned to study hall for this section
 <% else %>
-  The following students did not show up to study hall:
-    <% @assignment_array.each do |assignment| %>
-      <%= assignment.student.name %> was supposed to complete: "<%= assignment.assn %>" for <%= assignment.user.name %><br />
+  <% if @missingassignment_array.empty? %>
+    No missing students for this section
+  <% else %>
+    The following students did not show up to study hall:
+    <% @missingassignment_array.each do |assignment| %>
+      <%= assignment.student.name %> had to complete: <%= assignment.assn %> for <%= assignment.user.name %><br />
+    <% end %>
+  <% end %>
+
+  Students assigned to this section of study hall:
+  <% @allassignment_array.each do |assignment| %>
+    <%= assignment.student.name %> had to complete: <%= assignment.assn %> for <%= assignment.user.name %><br />
   <% end %>
 <% end %>
-    

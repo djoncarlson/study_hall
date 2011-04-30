@@ -1,19 +1,29 @@
 <h3>
-  Attendance record for <%= link_to @attendance.section.downcase, attendance_path(@attendance) %>
+  Attendance record for <%= @attendance.section.downcase %>
 </h3>
 
 <p>
   Created <%= @attendance.created_at.strftime('%d %b %Y') %> by <%= @attendance.user.name %>
 </p>
 
-<% if @assignment_array.empty? %>
-  <p>No missing students in this attendance record</p>
+<% if @allassignment_array.empty? %>
+  <p><strong>No students were assigned to study hall for this section</strong></p>
 <% else %>
-  <p>The following students did not show up to study hall:
-  <ul>
-  <% @assignment_array.each do |assignment| %>
-    <li><%= assignment.student.name %> was supposed to complete: "<%= assignment.assn %>" for <%= assignment.user.name %></li>
+  <% if @missingassignment_array.empty? %>
+    <p><strong>No missing students in this attendance record</strong></p>
+  <% else %>
+    <h3><strong>The following students did not show up to study hall:</strong></h3>
+    <ul>
+    <% @missingassignment_array.each do |assignment| %>
+      <li><%= assignment.student.name %> had to complete: <%= assignment.assn %> for <%= assignment.user.name %></li>
+    <% end %>
+    </ul></p>
   <% end %>
-  </ul></p>
+  <p><strong>Students assigned to this section of study hall:</strong>
+  <ul>
+    <% @allassignment_array.each do |assignment| %>
+      <li><%= assignment.student.name %> had to complete: <%= assignment.assn %> for <%= assignment.user.name %></li>
+    <% end %>
+  </ul>
+  </p>
 <% end %>
-    
