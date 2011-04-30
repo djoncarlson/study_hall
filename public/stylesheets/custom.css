@@ -389,7 +389,6 @@ table.students tr td.student_sessions {
     color: #666;
 }
 
-
 table.students tr td.student span.content {
 }
 
@@ -405,10 +404,10 @@ table.students tr td.student_name span.timestamp {
     color: #666;
 }
 
-table.students tr td.student_name span.timestamp_over {
+table.students tr span.timestamp_red {
     display: block;
     font-size: 75%;
-    color: red;
+    color: #DE182D;
 }
 div.user_info a {
     text-decoration: none;

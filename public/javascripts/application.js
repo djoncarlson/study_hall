@@ -3,8 +3,10 @@ $(function() {
         $.get($("#student_search").attr("action"), $("#student_search").serialize(), null, "script");
         return false;
     });
-
+    //$("#focus_field").focus();
+    $('input:text:first').focus();
 });
+
 
 // application.js
 //$(function() {
