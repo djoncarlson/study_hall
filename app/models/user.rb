@@ -55,6 +55,7 @@ class User < ActiveRecord::Base
   
   def fetch_students_for_attendance(section)
     if section.nil?
+      #return []
       return Assignment.where(:active => true)
     else
       return Assignment.where(section => true, :active => true)

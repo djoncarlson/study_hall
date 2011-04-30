@@ -11,7 +11,7 @@
       <tr>
         <td class="student_name"><%= link_to student.name, student_path(student) %></td>
         <td class="student_assn">
-          <% if Assignment.where(:student_id => student, :active => true).empty? %>
+          <% if Assignment.where(:student_id => student, :active => true).to_a.empty? %>
             No Assignments
           <% else %>
             Currently assigned to study hall

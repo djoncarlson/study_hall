@@ -6,22 +6,25 @@ class AttendancesController < ApplicationController
   
   def show
     @attendance = Attendance.find(params[:id])
-    @assnlist = Attendance.list_of_assn_id(@attendance)
-
-    @assignment_array = Assignment.array_of_assignments(@assnlist)
-    @email_array = Assignment.array_of_emails(@assignment_array)
+    @missingstudents_array = Attendance.string_to_array(@attendance.missingstudents)
+    @allstudents_array = Attendance.string_to_array(@attendance.all)
+    
+    @missingassignment_array = Assignment.array_of_assignments(@missingstudents_array)
+    @allassignment_array = Assignment.array_of_assignments(@allstudents_array)
+    
+    @email_array = Assignment.array_of_emails(@allassignment_array)
     
   end
  
   def create
     @attendance = current_user.attendances.build(params[:attendance])
 
-    clean_section = Attendance.cleanup(params[:section].first.first)
-    @attendance.section = clean_section
-    @attendance.missingstudents = params[:missingstudents]   
-
+    @attendance.section = Attendance.cleanup(params[:section].first.first)
+    @attendance.missingstudents = params[:missingstudents]
+    @attendance.all = params[:all_ids]
+    
     if @attendance.save
-      Notifier.attendance_taken(@attendance).deliver
+      #Notifier.attendance_taken(@attendance).deliver
       flash[:success] = "Attendance record created"
       redirect_to attendance_path(@attendance)
     else

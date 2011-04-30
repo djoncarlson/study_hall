@@ -3,7 +3,7 @@
 <ul class="users">
 <% @users.each do |user| %>
 <li>
-  <%= link_to user.name, user %> has <%= pluralize(Assignment.where(:user_id => user, :active => true).count, 'participant') %> currently in study hall.
+  <%= link_to user.name, user %> has <%= pluralize(user.assignments.where(:user_id => user, :active => true).to_a.count, 'participant') %> currently in study hall.
   <% if current_user.admin? %>
     <%= link_to "delete", user, :method => :delete, :confirm => "Are you sure?", :title => "Delete #{user.name}" %>
   <% end %>

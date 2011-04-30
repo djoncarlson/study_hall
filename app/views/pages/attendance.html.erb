@@ -1,7 +1,10 @@
 <h3>Attendance</h3>
 <%= render 'shared/attendance_form'%>
 <hr />
-
+<p>
+<%=  %>
+</p>
+<% unless params[:attendance_list].nil? %>
 <% if @attendance_list.any? %>
   <h3><%= @session_in_words %></h3>
   <table class="students">
@@ -13,7 +16,8 @@
     </tr>
     <%= form_tag('/attendances') do %>
       <%= hidden_field(:user_id, current_user.id )%>
-      <%= hidden_field(:section, @session_in_words)%>
+      <%= hidden_field(:section, @session_in_words )%>
+      <%= hidden_field(:all_ids, @attendance_ids )%>
 
       <% @attendance_list.each do |assignment| %>
         <tr>
@@ -28,4 +32,5 @@
   </table>
 <% else %>
 <h3>No students for <%= @session_in_words %></h3>
+<% end %>
 <% end %>

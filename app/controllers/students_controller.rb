@@ -23,11 +23,6 @@ class StudentsController < ApplicationController
   end
   
   def index
-#    if params[:search]
-#      @students = Student.find(:all, :conditions => ['name LIKE ?', "%#{params[:search]}%"])
-#    else
-#      @students = Student.all
-#    end
     @students = Student.search(params[:search])
     @student = Student.new 
   end
@@ -36,8 +31,8 @@ class StudentsController < ApplicationController
 		@student = Student.find(params[:id])
 		@assignment = Assignment.new
 		@assignments = Assignment.where(:student_id => @student)
-		@active_assignments = @assignments.where(:active => true)
-		@inactive_assignments = @assignments.where(:active => false)
+		@active_assignments = @assignments.where(:active => true).to_a
+		@inactive_assignments = @assignments.where(:active => false).to_a
   end
   
   def update

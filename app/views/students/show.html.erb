@@ -77,7 +77,7 @@
   </tr>
   <% @inactive_assignments.each do |assignment| %>
     <tr>
-      <td class="student_assn"><%= assignment.assn %></td>
+      <td class="student_assn"><%= link_to assignment.assn, assignment_path(assignment) %></td>
       <td class="student_name"><%= assignment.user.name %></td>
       <td class="student_sessions"><%= assignment.created_at.strftime('%d %b %Y') %></td>
     </tr>      
@@ -88,48 +88,11 @@
 
 
 <% if false %>
-<% unless @assignments.empty? %>
-<table>
-  <tr>
-    <th>&nbsp;</th>
-    <th>Assignment</th>
-    <th>Assigned by</th>
-    <th>Dates of attendance</th>
-  </tr>
-  <% @assignments.each do |assignment| %>
-  <tr>
-    <td>
-      <% if current_user.id == assignment.user_id %>
-      <%= link_to "inactivate", assignment, 
-              :method => :delete,
-              :confirm => "You sure?",
-              :title => assignment.assn %>
-      <% end %>
-    </td>
-    <td>
+
       <%= assignment.assn %>
       <% if assignment.created_at <= (Time.now - 7.days) %>
         <span class="timestamp_red">Created <%= time_ago_in_words(assignment.created_at)%> ago.</span>
       <% else %>
         <span class="timestamp">Created <%= time_ago_in_words(assignment.created_at)%> ago.</span>
       <% end %>
-    </td>
-    <td><%= assignment.user.name%></td>
-    <td>
-      <ul>
-        <% if assignment.mlunch? %><li>Monday during lunch</li><% end %>
-        <% if assignment.mafter? %><li>Monday after school</li><% end %>
-        <% if assignment.tlunch? %><li>Tuesday during lunch</li><% end %>
-        <% if assignment.tafter? %><li>Tuesday after school</li><% end %>
-        <% if assignment.wlunch? %><li>Wednesday during lunch</li><% end %>
-        <% if assignment.wafter? %><li>Wednesday after school</li><% end %>
-        <% if assignment.rlunch? %><li>Thursday during lunch</li><% end %>
-        <% if assignment.rafter? %><li>Thursday after school</li><% end %>
-        <% if assignment.flunch? %><li>Friday during lunch</li><% end %>
-        <% if assignment.fafter? %><li>Friday after school</li><% end %>
-        </ul>
-      </td>
-  <% end %>
-  </table>
-<% end %>
-<% end %>
+      <% end %>

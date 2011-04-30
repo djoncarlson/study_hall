@@ -5,22 +5,33 @@
 <p>
   Created <%= @attendance.created_at.strftime('%d %b %Y') %> by <%= @attendance.user.name %>
 </p>
-
-<% if @assignment_array.empty? %>
-  <p>No missing students in this attendance record</p>
+<% if @allassignment_array.empty? %>
+  <p><strong>No students were supposed to be in study hall this day</strong></p>
 <% else %>
-  <p>The following students did not show up to study hall:
+  <p><strong>Students assigned to this section of study hall:</strong>
   <ul>
-  <% @assignment_array.each do |assignment| %>
+  <% @allassignment_array.each do |assignment| %>
+    <li><%= assignment.student.name %> had to complete: <%= assignment.assn %> for <%= assignment.user.name %></li>
+  <% end %>
+  </ul>
+  </p>
+<% end %>
+
+<% if @missingassignment_array.empty? %>
+  <p><strong>No missing students in this attendance record</strong></p>
+<% else %>
+  <p><strong>The following students did not show up to study hall:</strong>
+  <ul>
+  <% @missingassignment_array.each do |assignment| %>
     <li><%= assignment.student.name %> had to complete: <%= assignment.assn %> for <%= assignment.user.name %></li>
   <% end %>
   </ul></p>
 <% end %>
 
 <% if @email_array.empty? %>
-  <p>No emails will be sent to teachers</p>
+  <p><strong>No emails will be sent to teachers</strong></p>
 <% else %>
-  <p>The following emails addresses will recieve a message</p>
+  <p><strong>The following emails addresses will recieve a message</strong></p>
   <ul>
     <% @email_array.each do |email| %>
     <li><%= email %></li>

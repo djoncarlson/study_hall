@@ -16,8 +16,8 @@ class UsersController < ApplicationController
 #    @students = @user.students.paginate(:page => params[:page])
 		@title = @user.name
 		@assignments = Assignment.where(:user_id => @user)
-		@active_assignments = @assignments.where(:active => true)
-		@inactive_assignments = @assignments.where(:active => false)
+		@active_assignments = @assignments.where(:active => true).to_a
+		@inactive_assignments = @assignments.where(:active => false).to_a
 	end
 	
   def new
