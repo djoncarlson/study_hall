@@ -1,8 +1,0 @@
-<h1>AllStudents</h1>
-
-<% unless @student_list.empty? %>
-  <table class="students" summary="User students">
-    <%= render :partial => 'shared/each_student', :collection => @student_list %>
-  </table>
-  <%= will_paginate @student_list %>
-<% end %>
