@@ -177,7 +177,7 @@ a.small_dark_blue_button {
 	display: block;
 	text-align: center;
 	color: #F2F2F2;
-	width: 150px;
+	width: 130px; 
 	background: #326A8C;
 	font-size: 100%;
 	padding: 15px;
@@ -203,7 +203,7 @@ a.small_light_blue_button {
 	margin-right: auto;
 	display: block;
     text-align: center;
-	width: 150px;    
+	width: 130px;    
 	color: #303740;
 	background: #A3BAD9;
 	font-size: 100%;
@@ -358,11 +358,22 @@ table.students tr {
     vertical-align: top;
 }
 
+table.students tr td.assn_form {
+	width: 30%;
+}
+
 table.students tr td.student_name {
     border-top: 1px solid #ccc;
     vertical-align: top;
     padding-top: 1px;
     width: 30%;
+}
+
+table.students tr td.student_grade {
+    border-top: 1px solid #ccc;
+    vertical-align: top;
+    padding-top: 1px;
+    width: 5%;
 }
 
 table.students tr td.student_inactivate  {

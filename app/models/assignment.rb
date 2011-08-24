@@ -4,6 +4,7 @@ class Assignment < ActiveRecord::Base
                   :instructions, 
                   :student_id,
                   :active, 
+                  :comment,
                   :mlunch, :tlunch, :wlunch, :rlunch, :flunch, 
                   :mafter, :tafter, :wafter, :rafter, :fafter
   belongs_to :user

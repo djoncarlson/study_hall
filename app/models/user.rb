@@ -9,10 +9,10 @@ class User < ActiveRecord::Base
   end
   
 	attr_accessor :password
-  attr_accessible :name, :email, :password, :password_confirmation, :secretcode
+  attr_accessible :name, :email, :password, :password_confirmation, :secretcode, :admin
 	
-  has_many :assignments
-  has_many :attendances
+  has_many :assignments, :dependent => :destroy
+  has_many :attendances, :dependent => :destroy
 	
 	email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
@@ -55,7 +55,6 @@ class User < ActiveRecord::Base
   
   def fetch_students_for_attendance(section)
     if section.nil?
-      #return []
       return Assignment.where(:active => true)
     else
       return Assignment.where(section => true, :active => true)

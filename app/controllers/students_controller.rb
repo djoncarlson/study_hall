@@ -10,7 +10,7 @@ class StudentsController < ApplicationController
     @student = Student.new(params[:student])
     if @student.save
       flash[:success] = "Student created!"
-      redirect_to student_path(@student)
+      redirect_to students_path
     else
       flash[:notice] = "Student was not created, something went terribly wrong..."
       render 'new'
@@ -18,8 +18,9 @@ class StudentsController < ApplicationController
   end
     
   def destroy
-    @student.destroy
-    redirect_to root_path
+    Student.find(params[:id]).destroy
+    flash[:success] = "Student Record Deleted"
+    redirect_to students_path
   end
   
   def index

@@ -8,19 +8,21 @@
 <p><strong>Teacher:</strong> <%= @assignment.user.name %><br />
 <strong>Created:</strong> <%= time_ago_in_words(@assignment.created_at)%> ago on <%= @assignment.updated_at.strftime('%d %b %Y') %></p>
 <p>
-  This assignment 
+
     <% if @assignment.active == true %>
-       is active.
+		  This assignment is active.
     <% else %>
-      was inactivated <%= time_ago_in_words(@assignment.updated_at) %> ago on <%= @assignment.updated_at.strftime('%d %b %Y') %>.
+      <strong>Closed:</strong> <%= time_ago_in_words(@assignment.updated_at) %> ago on <%= @assignment.updated_at.strftime('%d %b %Y') %>
     <% end %>
 </p>
-
+<% if @assignment.comment %>
+	<p><strong>Closure comments:</strong><br /><%= @assignment.comment %></p>
+<% end %>
 <% if current_user.id == @assignment.user_id && @assignment.active == true %>
 <p>
-<%= link_to "Inactivate", @assignment, 
+<%= link_to "Close", @assignment, 
       :method => :delete,
-      :confirm => "Are you sure you want to deactivate this assignment?",
+      :confirm => "Are you sure you want to close this assignment?",
       :title => @assignment.assn %> this assignment when it is complete.
 </p>
 </td>

@@ -1,15 +1,18 @@
 <h3><%= @student.name %></h3>
-<%= link_to "Edit", edit_student_path %> student infomation
+<% if current_user.admin? %>
+	<%= link_to "Edit", edit_student_path %> student information
+<% end %>
 <hr />
-<table>
+<table class="students">
   <tr>
-    <td>
-      <h3>Assign <%= @student.name %> to Study Hall</h3>
-      <%= render 'shared/assn_form'%>
+    <td class="assn_form">
+			<% if false %>			<% end %>
+			<%= render 'shared/assn_form'%>
+
     <td>
     <td style="vertical-align: top">
       <% unless @active_assignments.empty? %>
-      <h3>Active Assignments - <%= @active_assignments.count %></h3>
+      <h3>Active Assignments (<%= @active_assignments.count %>)</h3>
       <table class="students">  
         <tr>
           <th>&nbsp;</th>
@@ -20,9 +23,9 @@
           <tr>
             <td class="student_inactivate">
               <% if current_user.id == assignment.user_id %>
-                  <%= link_to "inactivate", assignment, 
+                  <%= link_to "close", assignment, 
                     :method => :delete,
-                    :confirm => "Are you sure you want to deactivate this assignment?",
+                    :confirm => "Are you sure you want to close this assignment?",
                     :title => assignment.assn %>
               <% end %>
             </td>
@@ -68,7 +71,7 @@
 </table>
 
 <% unless @inactive_assignments.empty? %>
-<h3>Inactive Assignments - <%= @inactive_assignments.count %></h3>
+<h3>Closed Assignments (<%= @inactive_assignments.count %>)</h3>
 <table class="students">
   <tr>
     <th>Assignment</th>
@@ -77,7 +80,7 @@
   </tr>
   <% @inactive_assignments.each do |assignment| %>
     <tr>
-      <td class="student_assn"><%= link_to assignment.assn, assignment_path(assignment) %></td>
+      <td class="student_assn"><%= link_to assignment.assn, assignment_path(assignment) %><% if assignment.comment %> *<% end %></td>
       <td class="student_name"><%= assignment.user.name %></td>
       <td class="student_sessions"><%= assignment.created_at.strftime('%d %b %Y') %></td>
     </tr>      

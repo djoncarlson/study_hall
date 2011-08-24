@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110429171405) do
+ActiveRecord::Schema.define(:version => 20110823204929) do
 
   create_table "assignments", :force => true do |t|
     t.string   "assn"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(:version => 20110429171405) do
     t.boolean  "rafter"
     t.boolean  "fafter"
     t.string   "all"
+    t.string   "comment"
   end
 
   add_index "assignments", ["student_id"], :name => "index_assignments_on_student_id"
@@ -53,6 +54,7 @@ ActiveRecord::Schema.define(:version => 20110429171405) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "grade"
   end
 
   add_index "students", ["user_id"], :name => "index_students_on_user_id"

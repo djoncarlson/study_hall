@@ -6,7 +6,7 @@
       <%= link_to "edit", edit_user_path%>
       </td>
       <td style="align-right">
-      <%= link_to "Add a student", students_path, :class => "small_dark_blue_button round" %>
+      <%= link_to "Assign a student", students_path, :class => "small_dark_blue_button round" %>
       </td>
     <% else %>
       </td>
@@ -16,7 +16,7 @@
 <% unless @active_assignments.empty? %>
 <hr />
 <table class="students">
-  <tr><th colspan="3"><h3>Active Study Hall Assignments - <%= @active_assignments.count%></h3></th></tr>
+  <tr><th colspan="3"><h3>Current Study Hall Assignments (<%= @active_assignments.count%>)</h3></th></tr>
   <tr>
     <th>&nbsp;</th>
     <th>Student</th>
@@ -27,9 +27,9 @@
   <tr>    
     <td class="student_inactivate">
       <% if current_user.id == assignment.user_id %>
-        <%= link_to "inactivate", assignment, 
+        <%= link_to "close", assignment, 
                   :method => :delete,
-                  :confirm => "Are you sure you want to deactivate this assignment?",
+                  :confirm => "Are you sure you want to close this assignment?",
                   :title => assignment.assn %>
       <% end %>
       </td>
@@ -70,7 +70,7 @@
 
 <% unless @inactive_assignments.empty? %>
 <table class="students">
-  <tr><th colspan="3"><h3>Inactive Assignments - <%= @inactive_assignments.count%></h3></th></tr> 
+  <tr><th colspan="3"><h3>Closed Assignments (<%= @inactive_assignments.count%>)</h3></th></tr> 
   <tr>
     <th>&nbsp;</th>
     <th>Student</th>
@@ -81,7 +81,7 @@
   <tr>
     <td class="student_inactivate">&nbsp</td>
     <td class="student_name"><%= link_to assignment.student.name, student_path(assignment.student) %></td>
-    <td class="student_assn"><%= link_to assignment.assn, assignment_path(assignment) %></td>
+    <td class="student_assn"><%= link_to assignment.assn, assignment_path(assignment) %><% if assignment.comment %> *<% end %></td>
     <td class="student_sessions"><%= time_ago_in_words(assignment.created_at) %> ago</td>
   </tr>
   <% end %>

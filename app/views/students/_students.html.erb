@@ -5,11 +5,12 @@
 
     <tr>
       <th>Student</th>
-      <th>
-      </th>
+			<th>Grade</th>
+      <th>Status</th>
     <% @students.each do |student| %>
       <tr>
         <td class="student_name"><%= link_to student.name, student_path(student) %></td>
+				<td class="student_grade"><%=student.grade%></td>
         <td class="student_assn">
           <% if Assignment.where(:student_id => student, :active => true).to_a.empty? %>
             No Assignments

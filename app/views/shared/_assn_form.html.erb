@@ -1,5 +1,5 @@
 <%= form_for @assignment do |f| %>
-  <%= render 'shared/error_messages', :object => f.object %>
+	<%= render 'shared/error_messages', :object => f.object %>
   <div>
     <%= f.hidden_field :student_id, :value => @student.id %>
     <%= f.hidden_field :active, :value => 1 %>
@@ -7,12 +7,12 @@
   
   <div class="field" id="focus_field">
     <%= f.label "Assignment" %><br />
-    <%= f.text_field :assn, :size => 24 %>
+    <%= f.text_field :assn, :size => 38 %>
   </div>
 
   <div class="field">
     <%= f.label "Special instructions (optional)"%><br/>
-    <%= f.text_field :instructions, :size => 24 %>
+    <%= f.text_field :instructions, :size => 38 %>
   </div>
   <strong>Study Hall Sessions</strong>
   <table class="box_table">
@@ -41,9 +41,14 @@
         <td><%= f.check_box :fafter %></td>
       </tr>
     </table>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+		<% unless @assignment.new_record? %>
+		<div class="field">
+	    <%= f.label "Comments regarding closure" %><br/>
+	    <%= f.text_field :comment , :size => "38" %>
+	  </div>
+		<% end %>
+	  <div class="actions">
+	    <%= f.submit %>
+	  </div>
 
 <% end %>

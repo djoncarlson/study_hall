@@ -1,10 +1,11 @@
 class Student < ActiveRecord::Base
-  attr_accessible :name, :instructions
-  has_many :assignments
+  attr_accessible :name, :instructions, :grade
+  has_many :assignments, :dependent => :destroy
   
   validates :name, :presence => true
+  validates :grade, :presence => true
     
-  default_scope :order => 'students.name'
+  default_scope :order => 'students.grade, students.name'
   
   def self.search(search)
     if(search)

@@ -1,9 +1,18 @@
-<h2>Edit Student</h2>
+<h3>Update Student Information</h3>
 <%= form_for @student do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
-  <div>
-    <%= f.label "Update student name below" %><br />
-    <%= f.text_field :name, :size => 26 %>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name, :size => 26 %><br />
+	</div>
+	<div class="field">
+		<%= f.label :grade %>
+		<%= f.text_field :grade, :size => 12 %><br />
+	</div>
+	<div class="actions">
     <%= f.submit %>
   </div>
+<% end %>
+<% if current_user.admin? %>
+<%= link_to "Delete Student", @student, :method => :delete, :confirm => "Are you sure?", :title => "Confirm Deletion" %>
 <% end %>

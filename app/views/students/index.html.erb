@@ -1,16 +1,29 @@
-<p class="right">
+<% if current_user.admin? %>
+<p>
+	<h3>Add a student to the database</h3>
   <%= render 'shared/student_form'%>
 </p>
-
 <hr />
+<% end %>
 
-        <%= form_tag students_path, :method => 'get', :id => "student_search" do %>
-          <p class="right">
-          <!--[if lte IE 9]>Search:<![endif]-->
-            <%= text_field_tag :search, params[:search], :placeholder => " Search by name..." %>
-          </p>
-        <% end %>
-
+<% if false %>
+<table>
+<tr>
+	<td>
+		<h3>All Students</h3>
+	</td>
+	<td> <% end %>
+		<%= form_tag students_path, :method => 'get', :id => "student_search" do %>
+			<p>
+			Filter by name: 
+			  <%= text_field_tag :search, params[:search] %>
+			</p>
+		<% end %>
+<% if false %><!--[if lte IE 9]><![endif]-->
+	</td>
+</tr>
+</table>
+<% end %>
 <div id="students"><%= render 'students' %></div>
 
 
