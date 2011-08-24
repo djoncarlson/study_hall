@@ -5,3 +5,5 @@ tmp/
 *.sqlite3
 \033
 \033
+
+.DS_Store
