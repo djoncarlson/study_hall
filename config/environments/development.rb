@@ -33,7 +33,7 @@ StudyHall::Application.configure do
     :domain => "gmail.com",
     :authentication => "plain",
     :user_name => "djoncarlson",
-    :password => "fuk1juk1",
+    :password => "h1ghm8t0 sad3y3s",
     :enable_starttls_auto => true
   } 
 

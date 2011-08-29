@@ -12,7 +12,8 @@ class AttendancesController < ApplicationController
     @missingassignment_array = Assignment.array_of_assignments(@missingstudents_array)
     @allassignment_array = Assignment.array_of_assignments(@allstudents_array)
     
-    @email_array = Assignment.array_of_emails(@allassignment_array)
+#    @email_array = Assignment.array_of_emails(@allassignment_array)
+    @email_array = Assignment.array_of_emails(@missingassignment_array)
     
   end
  

@@ -14,8 +14,8 @@ class Notifier < ActionMailer::Base
     @missingassignment_array = Assignment.array_of_assignments(@attendance.missingstudents)
     @allassignment_array = Assignment.array_of_assignments(@attendance.all)
     
-    @email_array = Assignment.array_of_emails(@allassignment_array)
-    
+#    @email_array = Assignment.array_of_emails(@allassignment_array)
+    @email_array = Assignment.array_of_emails(@missingassignment_array)     
     mail :cc => @email_array, :subject => "Study Hall Attendance"
 
   end
