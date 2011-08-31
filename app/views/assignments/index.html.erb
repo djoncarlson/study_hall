@@ -1,5 +1,65 @@
 <h3>Current Assignments</h3>
-<% if @assignments.empty? %>
+<% if @active_assignments.empty? %>
+	<p>No students currently assigned to study hall</p>
+	<%= @active_assignments.empty? %>
+<% else %>	
+  <table class="students">
+    <tr>
+      <th>&nbsp;</th>
+      <th>Assignment</th>
+      <th>Student</th>
+      <th>Teacher</th>
+      <th>Created</th>
+    </tr>
+    <% @active_assignments.each do |assignment| %>
+      <tr>
+        <td class="student_inactivate">
+          <% if current_user.id == assignment.user_id %>
+            <%= link_to "close", assignment, 
+                :method => :delete,
+                :confirm => "Are you sure you want to close this assignment?",
+                :title => assignment.assn %>
+          <% end %>
+        </td>
+        <td class="student_assn"><%= link_to assignment.assn, assignment_path(assignment) %></td>
+        <td class="student_name"><%= link_to assignment.student.name, student_path(assignment.student) %></td>
+        <td class="student_name"><%= link_to assignment.user.name, user_path(assignment.user) %></td>
+				<% if assignment.created_at <= (Time.now - 7.days) %>
+        	<td class="student_sessions"><span class="timestamp_red"><%= assignment.created_at.strftime('%d %b %Y') %></span></td>
+				<% else %>
+        	<td class="student_sessions"><span class="timestamp"><%= assignment.created_at.strftime('%d %b %Y') %></span></td>
+				<% end %>
+      </tr>
+  <% end %>
+  </table>
+<% end %>	
+
+<% unless @inactive_assignments.empty? %>	
+<h3>Closed Assignments</h3>
+
+  <table class="students">
+    <tr>
+      <th>&nbsp;</th>
+      <th>Assignment</th>
+      <th>Student</th>
+      <th>Teacher</th>
+      <th>Created</th>
+    </tr>
+    <% @inactive_assignments.each do |assignment| %>
+      <tr>
+        <td class="student_inactivate">&nbsp;</td>
+        <td class="student_assn"><%= link_to assignment.assn, assignment_path(assignment) %></td>
+        <td class="student_name"><%= link_to assignment.student.name, student_path(assignment.student) %></td>
+        <td class="student_name"><%= link_to assignment.user.name, user_path(assignment.user) %></td>
+      	<td class="student_sessions"><%= assignment.created_at.strftime('%d %b %Y') %></td>
+      </tr>
+		<% end %>
+  </table>
+<% end %>
+
+
+
+<% if false %><% if @assignments.empty? %>
 	<p>No students currently assigned to study hall</p>
 <% else %>
   <table class="students">
@@ -38,4 +98,4 @@
       </tr>
   <% end %>
   </table>
-<% end %>
+<% end %><% end %>
