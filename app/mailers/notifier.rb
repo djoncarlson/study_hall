@@ -1,5 +1,5 @@
 class Notifier < ActionMailer::Base
-  default :from => "djoncarlson@gmail.com", :to => "gfigueroa@cotopaxi.k12.ec"
+  default :from => "djoncarlson@gmail.com", :to => "gfigueroa@cotopaxi.k12.ec; ewexler@cotopaxi.k12.ec"
 
   def attendance_taken(attendance_record)
     @attendance = attendance_record
@@ -15,7 +15,7 @@ class Notifier < ActionMailer::Base
     @allassignment_array = Assignment.array_of_assignments(@attendance.all)
     
 #    @email_array = Assignment.array_of_emails(@allassignment_array)
-    @email_array = Assignment.array_of_emails(@missingassignment_array)     
+    @email_array = Assignment.array_of_emails(@missingassignment_array)  
     mail :cc => @email_array, :subject => "Study Hall Attendance"
 
   end

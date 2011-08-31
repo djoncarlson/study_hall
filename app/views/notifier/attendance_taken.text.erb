@@ -13,7 +13,7 @@ Created <%= @attendance.created_at.strftime('%d %b %Y') %> by <%= @attendance.us
     <% end %>
   <% end %>
 
-  Students assigned to this section of study hall:
+  All students assigned to this section of study hall:
   <% @allassignment_array.each do |assignment| %>
     <%= assignment.student.name %> had to complete: <%= assignment.assn %> for <%= assignment.user.name %><br />
   <% end %>

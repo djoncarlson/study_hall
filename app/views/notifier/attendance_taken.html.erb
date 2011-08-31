@@ -19,7 +19,7 @@
     <% end %>
     </ul></p>
   <% end %>
-  <p><strong>Students assigned to this section of study hall:</strong>
+  <p><strong>All students assigned to this section of study hall:</strong>
   <ul>
     <% @allassignment_array.each do |assignment| %>
       <li><%= assignment.student.name %> -- <%= assignment.assn %> for <%= assignment.user.name %></li>
