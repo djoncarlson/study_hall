@@ -1,7 +1,6 @@
 <h3>Current Assignments</h3>
 <% if @active_assignments.empty? %>
 	<p>No students currently assigned to study hall</p>
-	<%= @active_assignments.empty? %>
 <% else %>	
   <table class="students">
     <tr>
@@ -48,7 +47,7 @@
     <% @inactive_assignments.each do |assignment| %>
       <tr>
         <td class="student_inactivate">&nbsp;</td>
-        <td class="student_assn"><%= link_to assignment.assn, assignment_path(assignment) %></td>
+        <td class="student_assn"><%= link_to assignment.assn, assignment_path(assignment) %><% if assignment.comment? %> *<% end %></td>
         <td class="student_name"><%= link_to assignment.student.name, student_path(assignment.student) %></td>
         <td class="student_name"><%= link_to assignment.user.name, user_path(assignment.user) %></td>
       	<td class="student_sessions"><%= assignment.created_at.strftime('%d %b %Y') %></td>

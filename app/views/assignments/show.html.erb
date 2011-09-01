@@ -15,7 +15,7 @@
       <strong>Closed:</strong> <%= time_ago_in_words(@assignment.updated_at) %> ago on <%= @assignment.updated_at.strftime('%d %b %Y') %>
     <% end %>
 </p>
-<% if @assignment.comment %>
+<% if @assignment.comment? %>
 	<p><strong>Closure comments:</strong><br /><%= @assignment.comment %></p>
 <% end %>
 <% if current_user.id == @assignment.user_id && @assignment.active == true %>
