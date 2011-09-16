@@ -1,5 +1,5 @@
 class Notifier < ActionMailer::Base
-  default :from => "djoncarlson@gmail.com", :to => "gfigueroa@cotopaxi.k12.ec; ewexler@cotopaxi.k12.ec"
+  default :from => "djoncarlson@gmail.com", :to => "gfigueroa@cotopaxi.k12.ec, ewexler@cotopaxi.k12.ec, sbrazinsky@cotopaxi.k12.ec"
 
   def attendance_taken(attendance_record)
     @attendance = attendance_record
