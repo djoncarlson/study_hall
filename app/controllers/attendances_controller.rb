@@ -23,7 +23,7 @@ class AttendancesController < ApplicationController
  
   def create
     @attendance = current_user.attendances.build(params[:attendance])
-
+    
     @attendance.section = Attendance.cleanup(params[:section].first.first)
     @attendance.missingstudents = params[:missingstudents]
     @attendance.all = params[:all_ids]
