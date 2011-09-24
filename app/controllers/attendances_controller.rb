@@ -10,13 +10,13 @@ class AttendancesController < ApplicationController
   
   def show
     @attendance = Attendance.find(params[:id])
-    @missingstudents_array = Attendance.string_to_array(@attendance.missingstudents)
-    @allstudents_array = Attendance.string_to_array(@attendance.all)
-    
+
+    @missingstudents_array = Attendance.db_to_web(@attendance.missingstudents)
+    @allstudents_array = Attendance.db_to_web(@attendance.all)
+        
     @missingassignment_array = Assignment.array_of_assignments(@missingstudents_array)
     @allassignment_array = Assignment.array_of_assignments(@allstudents_array)
     
-#    @email_array = Assignment.array_of_emails(@allassignment_array)
     @email_array = Assignment.array_of_emails(@missingassignment_array)
     
   end
@@ -33,7 +33,7 @@ class AttendancesController < ApplicationController
       flash[:success] = "Attendance record created"
       redirect_to attendance_path(@attendance)
     else
-      flash[:notice] = "Attendance not saved, something went terribly wrong..."
+      flash[:notice] = "Attendance not saved, something went wrong..."
       render 'new'
     end
   end

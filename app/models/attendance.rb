@@ -9,6 +9,10 @@ class Attendance < ActiveRecord::Base
     return attendance_record_hash.delete("'").delete("-").delete("\n").delete('"').strip
   end
   
+  def self.db_to_web(db_record)
+    strip_deleted_students(string_to_array(db_record))
+  end
+  
   def self.string_to_array(db_record)
     if db_record.nil?
       return []
@@ -19,6 +23,18 @@ class Attendance < ActiveRecord::Base
       end
       return as_ints
     end
+  end
+  
+  def self.strip_deleted_students(student_array)
+    clean = []
+    unless student_array.nil?
+      student_array.each do |ele|
+        unless Student.where(:id => ele).empty?
+          clean << ele
+        end
+      end
+    end
+    return clean
   end
 
 end
