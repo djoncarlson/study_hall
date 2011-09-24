@@ -18,7 +18,7 @@ class Assignment < ActiveRecord::Base
   
   def self.array_of_assignments(assnlist)
     assignment_array = []
-    unless assnlist.empty?
+    unless assnlist.nil?
       assnlist.each do |ele|
         assignment_array << Assignment.where(:id => ele).first
       end
@@ -28,7 +28,7 @@ class Assignment < ActiveRecord::Base
   
   def self.array_of_emails(assignment_array)
     email_array = []
-    unless assignment_array.empty?
+    unless assignment_array.nil?
       assignment_array.each do |assignment|
         if email_array.include?(assignment.user.email)
         else

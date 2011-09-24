@@ -1,0 +1,31 @@
+<h3>Attendance Records</h3>
+<% unless @attendance_records.empty? %>
+
+	<table class="students">
+		<th>Created on</th>
+		<th>Study Hall Section</th>
+		<th>Created by</th>
+	<% @attendance_records.each do |record| %>
+		<tr>
+			<td><%= link_to record.created_at.strftime("%A, %d %B %Y"), attendance_path(record.id) %></td>
+			<td>
+				<% if record.missingstudents.nil? %>
+					<% if record.all.nil? %>
+						<%= record.section.downcase %>
+					<% else %>
+						<span class="missing_students_green"><%= record.section.downcase %></span>
+					<% end %>
+				<% else %>
+					<span class="missing_students_red"><%= record.section.downcase %></span>
+				<% end %>
+			</td>
+			<td>
+				<% unless record.user.name.nil? %>
+					<%= record.user.name %>
+				<% end %>
+			</td>
+		</tr>
+	<% end %>
+	</table>
+  <%= will_paginate @attendance_records %>
+<% end %>

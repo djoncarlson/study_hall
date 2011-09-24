@@ -4,14 +4,16 @@ StudyHall::Application.routes.draw do
 	resources :sessions, :only => [:new, :create, :destroy]
   resources :students
   resources :assignments
-  resources :attendances, :only => [:show, :new, :create]
+  resources :attendances, :only => [:index, :show, :new, :create]
   
   match '/signout',     :to => 'sessions#destroy'
   match '/students',    :to => 'students#index'
   match '/signin',      :to => 'sessions#new'
 	match '/signup', 	    :to => 'users#new'
 	match '/attendance',  :to => 'pages#attendance'
+	match '/forgot_password',  :to => 'users#forgot_password'
 	root 							    :to => 'pages#home'
+	
    
 
   # The priority is based upon order of creation:

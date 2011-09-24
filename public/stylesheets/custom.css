@@ -420,6 +420,19 @@ table.students tr span.timestamp_red {
     font-size: 75%;
     color: #DE182D;
 }
+
+table.students tr span.missing_students_red {
+	display: block;
+	color: #DE182D;
+	
+}
+
+table.students tr span.missing_students_green {
+	display: block;
+	color: #007F1A;
+	
+}
+
 div.user_info a {
     text-decoration: none;
 }

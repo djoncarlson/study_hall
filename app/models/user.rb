@@ -109,7 +109,23 @@ class User < ActiveRecord::Base
   
   def get_email_list(list_of_assn_id)
   end    
-
+  
+  def send_new_password
+    new_pass = self.random_string
+#    self.reset_password(new_pass)
+    self.password = self.password_confirmation = new_pass
+    self.save
+    Notifier.send_password(email, new_pass).deliver
+  end
+  
+	def random_string
+	  new_pass = []
+	  chars = ("a".."z").to_a + ("A".."Z").to_a + ("0".."9").to_a
+	  1.upto(10).each do |i|
+	    new_pass << chars.rand
+    end
+    return new_pass.to_s
+  end
 
 	private
 		def encrypt_password
@@ -128,6 +144,12 @@ class User < ActiveRecord::Base
 		def secure_hash(string)
 			Digest::SHA2.hexdigest(string)
 		end
+		
+
+		
+		def reset_password(string)
+		  self.encrypted_password = encrypt(string)
+	  end
 		
 end
 

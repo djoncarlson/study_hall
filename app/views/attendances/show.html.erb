@@ -1,17 +1,17 @@
 <h3>
-  Attendance record for <%= link_to @attendance.section.downcase, attendance_path(@attendance) %>
+  Attendance record for <%= @attendance.section.downcase %>
 </h3>
 
 <p>
   Created <%= @attendance.created_at.strftime('%d %b %Y') %> by <%= @attendance.user.name %>
 </p>
 <% if @allassignment_array.empty? %>
-  <p><strong>No students were supposed to be in study hall this day</strong></p>
+  <p><strong>No students were supposed to be in study hall this section</strong></p>
 <% else %>
   <p><strong>Students assigned to this section of study hall:</strong>
   <ul>
   <% @allassignment_array.each do |assignment| %>
-    <li><%= assignment.student.name %> had to complete: <%= assignment.assn %> for <%= assignment.user.name %></li>
+    <li><%= assignment.student.name %> had to complete "<%= assignment.assn %>" for <%= assignment.user.name %></li>
   <% end %>
   </ul>
   </p>
@@ -23,14 +23,12 @@
   <p><strong>The following students did not show up to study hall:</strong>
   <ul>
   <% @missingassignment_array.each do |assignment| %>
-    <li><%= assignment.student.name %> had to complete: <%= assignment.assn %> for <%= assignment.user.name %></li>
+    <li><%= assignment.student.name %> had to complete "<%= assignment.assn %>" for <%= assignment.user.name %></li>
   <% end %>
   </ul></p>
 <% end %>
 
-<% if @email_array.empty? %>
-  <p><strong>No emails will be sent to teachers</strong></p>
-<% else %>
+<% unless @email_array.empty? %>
   <p><strong>The following emails addresses will receive a message</strong></p>
   <ul>
     <% @email_array.each do |email| %>

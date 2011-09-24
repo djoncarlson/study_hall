@@ -32,8 +32,8 @@ StudyHall::Application.configure do
     :port => 587,
     :domain => "gmail.com",
     :authentication => "plain",
-    :user_name => "djoncarlson",
-    :password => "h1ghm8t0 sad3y3s",
+    :user_name => "acstudyhall",
+    :password => "wexification",
     :enable_starttls_auto => true
   } 
 

@@ -4,6 +4,10 @@ class AttendancesController < ApplicationController
     @attendance = Attendance.new
   end
   
+  def index
+    @attendance_records = Attendance.all.paginate :page => params[:page], :order => 'created_at DESC', :per_page => 10
+  end
+  
   def show
     @attendance = Attendance.find(params[:id])
     @missingstudents_array = Attendance.string_to_array(@attendance.missingstudents)

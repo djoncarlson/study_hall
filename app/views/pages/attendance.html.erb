@@ -1,37 +1,42 @@
-<h3>Attendance</h3>
+<h3>Attendance - <%= link_to "records", attendances_path %></h3>
 <%= render 'shared/attendance_form'%>
 <hr />
 <p>
 <%=  %>
 </p>
 <% unless params[:attendance_list].nil? %>
-<% if @attendance_list.any? %>
-  <h3><%= @session_in_words %></h3>
-  <table class="students">
-    <tr>
-      <th>Absent?</th>
-      <th>Student</th>
-      <th>Teacher</th>
-      <th>Assignment</th>
-    </tr>
-    <%= form_tag('/attendances') do %>
-      <%= hidden_field(:user_id, current_user.id )%>
-      <%= hidden_field(:section, @session_in_words )%>
-      <% @attendance_ids.each do |id| %>
-        <%= hidden_field_tag('all_ids[]', id )%>
-      <% end %>
-      <% @attendance_list.each do |assignment| %>
-        <tr>
-          <td class="student_inactivate"><%= check_box_tag('missingstudents[]', assignment.id) %></td>
-          <td class="student_name"><%= assignment.student.name %></td>
-          <td class="student_name"><%= assignment.user.name %></td>
-          <td class="student_assn"><%= assignment.assn %></td>
-        </tr>
-      <% end %>
-      <%= submit_tag("Send Attendance") %>
-    <% end %>
-  </table>
-<% else %>
-<h3>No students for <%= @session_in_words %></h3>
-<% end %>
+	<% if @attendance_list.any? %>
+	  <h3><%= @session_in_words %></h3>
+	  <table class="students">
+	    <tr>
+	      <th>Absent?</th>
+	      <th>Student</th>
+	      <th>Teacher</th>
+	      <th>Assignment</th>
+	    </tr>
+	    <%= form_tag('/attendances') do %>
+	      <%= hidden_field(:user_id, current_user.id )%>
+	      <%= hidden_field(:section, @session_in_words )%>
+	      <% @attendance_ids.each do |id| %>
+	        <%= hidden_field_tag('all_ids[]', id )%>
+	      <% end %>
+	      <% @attendance_list.each do |assignment| %>
+	        <tr>
+	          <td class="student_inactivate"><%= check_box_tag('missingstudents[]', assignment.id) %></td>
+	          <td class="student_name"><%= assignment.student.name %></td>
+	          <td class="student_name"><%= assignment.user.name %></td>
+	          <td class="student_assn"><%= assignment.assn %></td>
+	        </tr>
+	      <% end %>
+	      <%= submit_tag("Send Attendance") %>
+	    <% end %>
+	  </table>
+	<% else %>
+		<h3>No students for <%= @session_in_words %>, send the attendance and go to lunch!</h3>
+		<%= form_tag('/attendances') do %>
+		  <%= hidden_field(:user_id, current_user.id )%>
+		  <%= hidden_field(:section, @session_in_words )%>
+		<%= submit_tag("Send Attendance") %>
+		<% end %>
+	<% end %>
 <% end %>

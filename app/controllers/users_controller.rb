@@ -13,7 +13,6 @@ class UsersController < ApplicationController
   
 	def show
 		@user = User.find(params[:id])
-#    @students = @user.students.paginate(:page => params[:page])
 		@title = @user.name
 		@assignments = Assignment.where(:user_id => @user)
 		@active_assignments = @assignments.where(:active => true).to_a
@@ -58,6 +57,18 @@ class UsersController < ApplicationController
     User.find(params[:id]).destroy
     flash[:success] = "User destroyed."
     redirect_to users_path
+  end
+  
+  def forgot_password
+    if request.post?
+      u = User.find_by_email(params[:email])
+      if u and u.send_new_password
+        flash[:success]  = "A new password has been sent to your email."
+        redirect_to signin_path
+      else
+        flash[:error]  = "The email address you entered is not in the database, please try again."
+      end
+    end
   end
   
   private

@@ -3,6 +3,8 @@ class Attendance < ActiveRecord::Base
   attr_accessible :missingstudents, :section, :all
   belongs_to :user
   
+  default_scope order('attendances.created_at DESC')
+    
   def self.cleanup(attendance_record_hash)
     return attendance_record_hash.delete("'").delete("-").delete("\n").delete('"').strip
   end
