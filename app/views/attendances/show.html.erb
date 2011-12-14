@@ -11,7 +11,7 @@
   <p><strong>Students assigned to this section of study hall:</strong>
   <ul>
   <% @allassignment_array.each do |assignment| %>
-    <li><%= assignment.student.name %> had to complete "<%= assignment.assn %>" for <%= assignment.user.name %></li>
+    <li><%= assignment.student.name %> had to complete "<%= link_to assignment.assn, assignment_path(assignment.id) %>" for <%= assignment.user.name %></li>
   <% end %>
   </ul>
   </p>
@@ -23,7 +23,7 @@
   <p><strong>The following students did not show up to study hall:</strong>
   <ul>
   <% @missingassignment_array.each do |assignment| %>
-    <li><%= assignment.student.name %> had to complete "<%= assignment.assn %>" for <%= assignment.user.name %></li>
+    <li><%= assignment.student.name %> had to complete "<%= link_to assignment.assn, assignment_path(assignment.id) %>" for <%= assignment.user.name %></li>
   <% end %>
   </ul></p>
 <% end %>

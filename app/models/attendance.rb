@@ -10,7 +10,8 @@ class Attendance < ActiveRecord::Base
   end
   
   def self.db_to_web(db_record)
-    strip_deleted_students(string_to_array(db_record))
+    #strip_deleted_students(string_to_array(db_record))
+    string_to_array(db_record)
   end
   
   def self.string_to_array(db_record)
@@ -25,6 +26,7 @@ class Attendance < ActiveRecord::Base
     end
   end
   
+  #This function is broken and shouldn't be used until fixed!
   def self.strip_deleted_students(student_array)
     clean = []
     unless student_array.nil?

@@ -25,7 +25,7 @@
 	          <td class="student_inactivate"><%= check_box_tag('missingstudents[]', assignment.id) %></td>
 	          <td class="student_name"><%= assignment.student.name %></td>
 	          <td class="student_name"><%= assignment.user.name %></td>
-	          <td class="student_assn"><%= assignment.assn %></td>
+	          <td class="student_assn"><%= link_to assignment.assn, assignment_path(assignment.id) %></td>
 	        </tr>
 	      <% end %>
 	      <%= submit_tag("Send Attendance") %>
