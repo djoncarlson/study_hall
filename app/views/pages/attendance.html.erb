@@ -4,7 +4,7 @@
 <p>
 <%=  %>
 </p>
-<% unless params[:attendance_list].nil? %>
+<% unless params[:attendance_list].blank? %>
 	<% if @attendance_list.any? %>
 	  <h3><%= @session_in_words %></h3>
 	  <table class="students">
