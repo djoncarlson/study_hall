@@ -36,9 +36,9 @@
         <td>After:</td>
         <td><%= f.check_box :mafter %></td>
         <td><%= f.check_box :tafter %></td>
-        <td><%= f.check_box :wafter %></td>
+        <td><%= f.check_box :wafter, :disabled => true %></td>
         <td><%= f.check_box :rafter %></td>
-        <td><%= f.check_box :fafter %></td>
+        <td><%= f.check_box :fafter, :disabled => true %></td>
       </tr>
     </table>
 		<% unless @assignment.new_record? %>
