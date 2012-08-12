@@ -23,7 +23,7 @@
         <td class="student_assn"><%= link_to assignment.assn, assignment_path(assignment) %></td>
         <td class="student_name"><%= link_to assignment.student.name, student_path(assignment.student) %></td>
         <td class="student_name"><%= link_to assignment.user.name, user_path(assignment.user) %></td>
-				<% if assignment.created_at <= (Time.now - 7.days) %>
+				<% if assignment.created_at <= (Time.now - 7.days) && assignment.long_term != true %>
         	<td class="student_sessions"><span class="timestamp_red"><%= assignment.created_at.strftime('%d %b %Y') %></span></td>
 				<% else %>
         	<td class="student_sessions"><span class="timestamp"><%= assignment.created_at.strftime('%d %b %Y') %></span></td>

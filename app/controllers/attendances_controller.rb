@@ -30,6 +30,7 @@ class AttendancesController < ApplicationController
     
     if @attendance.save
       Notifier.attendance_taken(@attendance).deliver
+      Notifier.one_week_reminder().deliver
       flash[:success] = "Attendance record created"
       redirect_to attendance_path(@attendance)
     else

@@ -8,12 +8,18 @@
   <div class="field" id="focus_field">
     <%= f.label "Assignment" %><br />
     <%= f.text_field :assn, :size => 38 %>
-  </div>
+		<%= f.check_box :long_term %>Long Term <small>(admin or athletic dept only)</small>
+ </div>
 
+	<div>
+		
+	</div>
+	
   <div class="field">
     <%= f.label "Special instructions (optional)"%><br/>
     <%= f.text_field :instructions, :size => 38 %>
   </div>
+
   <strong>Study Hall Sessions</strong>
   <table class="box_table">
        <th>

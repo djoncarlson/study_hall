@@ -12,6 +12,19 @@ class Notifier < ActionMailer::Base
 
   end
   
+  def one_week_reminder()
+    @old_assignments = Assignment.week_old_assignments()
+    @old_assignment_array = Assignment.array_of_assignments(@old_assignments)
+    @old_assignment_emails = Assignment.array_of_emails(@old_assignment_array)
+    unless @old_assignments.empty?
+#      @old_assignments.each do |assn|
+#       mail :to => assn.user.email, :subject => "Old Study Hall Assignment"
+#      end
+#      mail :to => @old_assignment_emails, :subject => "Old Study Hall Assignments"
+      mail :to => "djoncarlson@gmail.com", :subject => "Old Study Hall Assignments"
+    end
+  end
+  
   def send_password(email, new_pass)
     @new_pass = new_pass
     @email = email

@@ -6,7 +6,8 @@ class Assignment < ActiveRecord::Base
                   :active, 
                   :comment,
                   :mlunch, :tlunch, :wlunch, :rlunch, :flunch, 
-                  :mafter, :tafter, :wafter, :rafter, :fafter
+                  :mafter, :tafter, :wafter, :rafter, :fafter,
+                  :long_term
   belongs_to :user
   belongs_to :student
   
@@ -37,6 +38,11 @@ class Assignment < ActiveRecord::Base
       end
     end    
     return email_array
+  end
+  
+  def self.week_old_assignments()
+    one_week_ago = Time.now - 7.days
+    return Assignment.where(["created_at < ? AND active = ? AND long_term != ?", one_week_ago, true, true])
   end
   
 end

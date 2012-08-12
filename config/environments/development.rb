@@ -33,9 +33,11 @@ StudyHall::Application.configure do
     :domain => "gmail.com",
     :authentication => "plain",
     :user_name => "acstudyhall",
-    :password => "wexification",
+    :password => "gocougars",
     :enable_starttls_auto => true
   } 
+  
+
 
 end
 

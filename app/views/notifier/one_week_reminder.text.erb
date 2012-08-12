@@ -1,0 +1,11 @@
+Hello,
+<p>
+It appears that you have an assignment that is a bit old. As per policy a student can only be in study hall for one week before the problem is escalated to the administration. If the student has not yet turned in the assignment please contact Eddie.</p>
+
+<ul>
+<% @old_assignment_array.each do |assignment| %>
+	<li><%= assignment.student.name %> -- <%= assignment.assn %> for <%= assignment.user.name %></li>
+<% end %>	
+</ul>
+
+Please log into the study hall manager at your earliest convenience: http://studyhall.heroku.com
