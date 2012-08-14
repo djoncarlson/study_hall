@@ -2,12 +2,14 @@
   <tr>
   <td>
     <h3><%= @user.name %></h3> (<%= @user.email%>)
-    <% if @user == current_user %>
+    <% if @user == current_user || current_user.admin? %>
       <%= link_to "edit", edit_user_path%>
       </td>
+			<% if @user == current_user %>
       <td style="align-right">
       <%= link_to "Assign a student", students_path, :class => "small_dark_blue_button round" %>
       </td>
+			<% end %>
     <% else %>
       </td>
     <% end %>

@@ -1,17 +1,25 @@
 <h3>Teachers</h3>
-
-<ul class="users">
-<% @users.each do |user| %>
-<li>
-	<% unless user.admin? %>
-  <%= link_to user.name, user %> has <%= pluralize(user.assignments.where(:user_id => user, :active => true).to_a.count, 'participant') %> currently in study hall.
-  <% if current_user.admin? %>
-    <%= link_to " Delete Teacher", user, :method => :delete, :confirm => "Are you sure?", :title => "Delete #{user.name}" %>
-  <% end %>
-	<% end %>
-</li>
+<table>
+<% if current_user.admin? %>
+	<th></th>
 <% end %>
-</ul>
-
+	<th></th>
+	<th># currently in study hall</th>	
+<% @users.each do |user| %>
+	<tr>
+		  <% if current_user.admin? %>
+				<td>		
+		    <%= link_to "delete", user, :method => :delete, :confirm => "Are you sure?", :title => "Delete #{user.name}" %>
+				</td>
+		  <% end %>			
+		<td>
+			  <%= link_to user.name, user %>
+		</td>
+		<td>	
+			<%= user.assignments.where(:user_id => user, :active => true).to_a.count %>
+		</td>
+	</tr>
+<% end %>
+</table>
 
 

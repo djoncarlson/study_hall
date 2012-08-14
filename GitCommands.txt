@@ -6,3 +6,5 @@ git merge branch_name
 git push
 git push heroku master
 git push staging
+
+to pull a copy of the heroku db -> heroku db:pull --app studyhall (then migrage (rake db:migrate) if necessary)

@@ -139,8 +139,6 @@ class User < ActiveRecord::Base
 			Digest::SHA2.hexdigest(string)
 		end
 		
-
-		
 		def reset_password(string)
 		  self.encrypted_password = encrypt(string)
 	  end

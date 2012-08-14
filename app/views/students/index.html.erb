@@ -1,8 +1,15 @@
 <% if current_user.admin? %>
 <p>
-	<h3>Add a student to the database</h3>
-  <%= render 'shared/student_form'%>
+	<table>
+	<td>
+		<h3>Add a student to the database</h3>
+  	<%= render 'shared/student_form'%>
+	</td>
+	<td valign='top'>
+		<%= link_to "New School Year? - Update Database", '/newYearPromotion', :confirm => "This action will delete all assignments, attendance records, and senior students. It will also move all students up a grade level. This should be done only once! Are you sure you want to do this? Hit 'Cancel' if you have any questions in your head.", :class => "small_red_button round" %>		
+	</td>
 </p>
+</table>
 <hr />
 <% end %>
 

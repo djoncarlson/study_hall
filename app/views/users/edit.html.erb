@@ -17,6 +17,15 @@
     <%= f.label :password_confirmation, "Confirmation" %><br />
     <%= f.password_field :password_confirmation %>
   </div>
+	<div class="button">
+		<%= f.label :admin %>
+			<% if current_user.admin? %>	
+				<%= f.check_box :admin %>
+			<% else %>
+				<%= f.check_box :admin, :disabled => true %>
+			<% end %>
+			<br><br>
+	</div>
   <div class="actions">
     <%= f.submit %>
   </div>

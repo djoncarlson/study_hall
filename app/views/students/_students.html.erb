@@ -4,11 +4,19 @@
 <% else %>
 
     <tr>
+			<% if current_user.admin? %>
+				<th></th>
+			<% end %>
       <th>Student</th>
 			<th>Grade</th>
       <th>Status</th>
     <% @students.each do |student| %>
       <tr>
+				<% if current_user.admin? %>
+					<td class="student_grade">
+						<%= link_to "Delete", student, :method => :delete, :confirm => "Are you sure?", :title => "Confirm Deletion" %>
+					</td>
+				<% end %>
         <td class="student_name"><%= link_to student.name, student_path(student) %></td>
 				<td class="student_grade"><%=student.grade%></td>
         <td class="student_assn">

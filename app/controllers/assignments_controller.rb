@@ -28,6 +28,7 @@ class AssignmentsController < ApplicationController
   def index
     @active_assignments = Assignment.where(:active => true).to_a
     @inactive_assignments = Assignment.where(:active => false).to_a
+    @long_term_assignments = Assignment.where(:long_term => true).to_a
     @assignments = Assignment.all.paginate :page => params[:page], :order => 'active DESC', :per_page => 15
   end
   

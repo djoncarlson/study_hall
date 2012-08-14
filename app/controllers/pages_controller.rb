@@ -19,4 +19,20 @@ class PagesController < ApplicationController
     end
   end
 
+  def newYearPromotion
+    if current_user.admin?
+      Assignment.destroy_all
+      Attendance.destroy_all
+      Student.destroy_all('grade > 11')
+      Student.all.each do |stu|
+        stu.grade = stu.grade + 1
+        stu.save
+      end
+      flash[:success] = "Database Updated"
+      redirect_to students_path
+    else
+      flash[:notice] = "You do not have sufficient rights to perform that operation"
+      redirect_to students_path
+    end
+  end
 end

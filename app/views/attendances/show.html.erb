@@ -5,14 +5,16 @@
 <p>
   Created <%= @attendance.created_at.strftime('%d %b %Y') %> by <%= @attendance.user.name %>
 </p>
-<% if @allassignment_array.empty? %>
+<% if @allassignment_array.empty? || @allassignment_array.nil? %>
   <p><strong>No students were supposed to be in study hall this section</strong></p>
 <% else %>
   <p><strong>Students assigned to this section of study hall:</strong>
   <ul>
   <% @allassignment_array.each do |assignment| %>
-    <li><%= assignment.student.name %> had to complete "<%= link_to assignment.assn, assignment_path(assignment.id) %>" for <%= assignment.user.name %></li>
-  <% end %>
+    <% unless assignment.nil? %>
+			<li><%= assignment.student.name %> had to complete "<%= link_to assignment.assn, assignment_path(assignment.id) %>" for <%= assignment.user.name %></li>
+  	<% end %>
+	<% end %>
   </ul>
   </p>
 <% end %>
@@ -23,7 +25,9 @@
   <p><strong>The following students did not show up to study hall:</strong>
   <ul>
   <% @missingassignment_array.each do |assignment| %>
+		<% unless assignment.nil? %>
     <li><%= assignment.student.name %> had to complete "<%= link_to assignment.assn, assignment_path(assignment.id) %>" for <%= assignment.user.name %></li>
+		<% end %>
   <% end %>
   </ul></p>
 <% end %>

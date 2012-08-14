@@ -11,6 +11,7 @@ StudyHall::Application.routes.draw do
   match '/signin',      :to => 'sessions#new'
 	match '/signup', 	    :to => 'users#new'
 	match '/attendance',  :to => 'pages#attendance'
+	match '/newYearPromotion',  :to => 'pages#newYearPromotion'
 	match '/forgot_password',  :to => 'users#forgot_password'
 	root 							    :to => 'pages#home'
 	
