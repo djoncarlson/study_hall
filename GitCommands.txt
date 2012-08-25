@@ -8,3 +8,5 @@ git push heroku master
 git push staging
 
 to pull a copy of the heroku db -> heroku db:pull --app studyhall (then migrage (rake db:migrate) if necessary)
+
+When deploying to master or staging remember to do a heroku db:migrate to bring the database up to date.

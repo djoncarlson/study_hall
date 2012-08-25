@@ -39,13 +39,19 @@ StudyHall::Application.configure do
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address => "smtp.gmail.com",
-    :port => 587,
-    :domain => "gmail.com",
-    :authentication => "plain",
-    :user_name => "acstudyhall",
-    :password => "gocougars",
-    :enable_starttls_auto => true
+        :address => "smtp.gmail.com",
+        :port => 587,
+        :domain => "gmail.com",
+        :authentication => "plain",
+        :user_name => "acstudyhall",
+        :password => "gocougars",
+    #    :address => "190.108.66.210",
+    #    :port => 25,
+    #    :domain => "cotopaxi.k12.ec",
+    #    :authentication => "plain",
+    #    :user_name => "hsstudyhall",
+    #    :password => "hsstudyhall2012",
+        :enable_starttls_auto => true
   } 
 
   # Enable threaded mode

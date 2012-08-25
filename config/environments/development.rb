@@ -34,9 +34,17 @@ StudyHall::Application.configure do
     :authentication => "plain",
     :user_name => "acstudyhall",
     :password => "gocougars",
-    :enable_starttls_auto => true
+
+# add require 'ntlm/smtp' to environment.rb
+# add gem 'ruby-ntlm' to Gemfile -> bundle install
+#    :address => "190.108.66.210 or 211",
+#    :port => 25,
+#    :domain => "cotopaxi.k12.ec",
+#    :authentication => :ntlm,
+#    :user_name => "hsstudyhall",
+#    :password => "hsstudyhall2012",
+#    :enable_starttls_auto => true
   } 
-  
 
 
 end
