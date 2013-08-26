@@ -13,62 +13,62 @@
 ActiveRecord::Schema.define(:version => 20120812174426) do
 
   create_table "assignments", :force => true do |t|
-    t.string    "assn"
-    t.string    "instructions"
-    t.integer   "user_id"
-    t.integer   "student_id"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-    t.boolean   "active"
-    t.boolean   "mlunch"
-    t.boolean   "tlunch"
-    t.boolean   "wlunch"
-    t.boolean   "rlunch"
-    t.boolean   "flunch"
-    t.boolean   "mafter"
-    t.boolean   "tafter"
-    t.boolean   "wafter"
-    t.boolean   "rafter"
-    t.boolean   "fafter"
-    t.string    "all"
-    t.string    "comment"
-    t.boolean   "long_term",    :default => false
+    t.string   "assn"
+    t.string   "instructions"
+    t.integer  "user_id"
+    t.integer  "student_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "active"
+    t.boolean  "mlunch"
+    t.boolean  "tlunch"
+    t.boolean  "wlunch"
+    t.boolean  "rlunch"
+    t.boolean  "flunch"
+    t.boolean  "mafter"
+    t.boolean  "tafter"
+    t.boolean  "wafter"
+    t.boolean  "rafter"
+    t.boolean  "fafter"
+    t.string   "all"
+    t.string   "comment"
+    t.boolean  "long_term",    :default => false
   end
 
   add_index "assignments", ["student_id"], :name => "index_assignments_on_student_id"
   add_index "assignments", ["user_id"], :name => "index_assignments_on_user_id"
 
   create_table "attendances", :force => true do |t|
-    t.string    "section"
-    t.string    "missingstudents"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-    t.integer   "user_id"
-    t.string    "all"
+    t.string   "section"
+    t.string   "missingstudents"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.string   "all"
   end
 
   add_index "attendances", ["user_id"], :name => "index_attendances_on_user_id"
 
   create_table "students", :force => true do |t|
-    t.string    "name"
-    t.text      "instructions"
-    t.integer   "user_id"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-    t.integer   "grade"
+    t.string   "name"
+    t.text     "instructions"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "grade"
   end
 
   add_index "students", ["user_id"], :name => "index_students_on_user_id"
 
   create_table "users", :force => true do |t|
-    t.string    "name"
-    t.string    "email"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-    t.string    "encrypted_password"
-    t.string    "salt"
-    t.boolean   "admin",              :default => false
-    t.string    "secretcode"
+    t.string   "name"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "encrypted_password"
+    t.string   "salt"
+    t.boolean  "admin",              :default => false
+    t.string   "secretcode"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
