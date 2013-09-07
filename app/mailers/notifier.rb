@@ -9,9 +9,9 @@ class Notifier < ActionMailer::Base
     @allassignment_array = Assignment.array_of_assignments(@attendance.all)
     @email_array = Assignment.array_of_emails(@missingassignment_array)  
 # production
-#    mail :to => "vzea@cotopaxi.k12.ec, avandarakis@cotopaxi.k12.ec, sbrazinsky@cotopaxi.k12.ec", :cc => @email_array, :subject => "Study Hall & Detention Attendance"
+    mail :to => "vzea@cotopaxi.k12.ec, avandarakis@cotopaxi.k12.ec, sbrazinsky@cotopaxi.k12.ec", :cc => @email_array, :subject => "Study Hall & Detention Attendance"
 # testing
-    mail :to => "djoncarlson@gmail.com", :subject => "Study Hall Attendance"
+#    mail :to => "djoncarlson@gmail.com", :subject => "Study Hall Attendance"
 
   end
   

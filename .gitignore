@@ -8,3 +8,4 @@ tmp/
 
 .DS_Store
 study_hall.tmproj
+*.dump
