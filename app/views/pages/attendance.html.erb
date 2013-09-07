@@ -10,10 +10,11 @@
 	  <table class="students">
 	    <tr>
 	      <th>Absent?</th>
+		    <th>Type</th>
 	      <th>Student</th>
 	      <th>Teacher</th>
 	      <th>Assignment</th>
-				<th>Created</th>
+		  <th>Created</th>
 	    </tr>
 	    <%= form_tag('/attendances') do %>
 	      <%= hidden_field(:user_id, current_user.id )%>
@@ -24,21 +25,19 @@
 	      <% @attendance_list.each do |assignment| %>
 	        <tr>
 	          <td class="student_inactivate"><%= check_box_tag('missingstudents[]', assignment.id) %></td>
-	          <td class="student_name"><%= link_to assignment.student.name, student_path(assignment.student.id) %></td>
+	          <td class="student_detention"><% if assignment.detention %>D<% else %>SH<% end %></td>
+			 			<td class="student_name"><%= assignment.student.name %></td>
 	          <td class="student_name"><%= assignment.user.name %></td>
-	          <td class="student_assn"><%= link_to assignment.assn, assignment_path(assignment.id) %></td>
-						<% if assignment.created_at <= (Time.now - 7.days) && assignment.long_term != true %>
-		        	<td class="student_sessions"><span class="timestamp_red"><%= assignment.created_at.strftime('%d %b %Y') %></span></td>
-						<% else %>
-		        	<td class="student_sessions"><span class="timestamp"><%= assignment.created_at.strftime('%d %b %Y') %></span></td>
-						<% end %>
+	          <td class="student_assn"><%= assignment.assn %></td>
+        	  <td class="student_sessions"><span class="timestamp"><%= assignment.created_at.strftime('%d %b %Y') %></span></td>
 	        </tr>
 	      <% end %>
-	      <%= submit_tag("Send Attendance") %>
-	    <% end %>
 	  </table>
+      <%= submit_tag("Send Attendance") %>
+    <% end %>
+	
 	<% else %>
-		<h3>No students for <%= @session_in_words %>, send the attendance and go to lunch!</h3>
+		<h3>No students for this session, send the attendance and go!</h3>
 		<%= form_tag('/attendances') do %>
 		  <%= hidden_field(:user_id, current_user.id )%>
 		  <%= hidden_field(:section, @session_in_words )%>

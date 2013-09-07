@@ -29,10 +29,11 @@ class StudentsController < ApplicationController
   end
 
   def show
-		@student = Student.find(params[:id])
+		@student = Student.find_by_id(params[:id])
 		@assignment = Assignment.new
 		@assignments = Assignment.where(:student_id => @student)
-		@active_assignments = @assignments.where(:active => true).to_a
+		@active_assignments = @assignments.where("active = ?", true).to_a
+		@detention_assignments = @assignments.where("active = ? AND detention = ?", true, true).to_a
 		@inactive_assignments = @assignments.where(:active => false).to_a
   end
   

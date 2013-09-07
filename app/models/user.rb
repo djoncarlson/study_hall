@@ -61,6 +61,25 @@ class User < ActiveRecord::Base
     end
   end
   
+  def fetch_detention_for_attendance(section)
+    if section.nil?
+      return Assignment.where(:active => true)
+    else
+#      return Assignment.where("section = ? AND active = ? AND detention = ?", true, true, true)
+      return Assignment.where(section => true, :active => true, :detention => true)
+    end
+  end
+  
+  def fetch_studyhall_for_attendance(section)
+    if section.nil?
+      return Assignment.where(:active => true)
+    else
+#      return Assignment.where("section = ? AND active = ? AND detention = ?", true, true, false)
+      return Assignment.where(section => true, :active => true, :detention => false)
+    end
+  end
+  
+  
   def convert_section_to_string(section)
     if section.nil?
       return "All Active Participants"

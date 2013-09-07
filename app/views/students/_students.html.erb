@@ -23,7 +23,7 @@
           <% if Assignment.where(:student_id => student, :active => true).to_a.empty? %>
             No Assignments
           <% else %>
-            Currently assigned to study hall
+            Currently assigned to study hall or detention
           <% end %>  
         </td>
       </tr>

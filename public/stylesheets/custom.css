@@ -378,7 +378,7 @@ table.students tr td.student_name {
     border-top: 1px solid #ccc;
     vertical-align: top;
     padding-top: 1px;
-    width: 30%;
+    width: 20%;
 }
 
 table.students tr td.student_grade {
@@ -391,6 +391,7 @@ table.students tr td.student_grade {
 table.students tr td.student_inactivate  {
     border-top: 1px solid #ccc;
     vertical-align: top;
+	text-align: center;
     padding-top: 1px;
     width: 5%;
     font-size: 85%;
@@ -401,6 +402,14 @@ table.students tr td.student_assn {
     vertical-align: top;
     padding-top: 1px;
     width: 25%;
+}
+
+table.students tr td.student_detention {
+    border-top: 1px solid #ccc;
+    vertical-align: top;
+	text-align: center;
+    padding-top: 1px;
+    width: 3%;
 }
 
 table.students tr td.student_sessions {

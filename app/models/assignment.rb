@@ -7,7 +7,8 @@ class Assignment < ActiveRecord::Base
                   :comment,
                   :mlunch, :tlunch, :wlunch, :rlunch, :flunch, 
                   :mafter, :tafter, :wafter, :rafter, :fafter,
-                  :long_term
+                  :long_term,
+                  :detention
   belongs_to :user
   belongs_to :student
   

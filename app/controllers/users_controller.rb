@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   end
   
 	def show
-		@user = User.find(params[:id])
+		@user = User.find_by_id(params[:id])
 		@title = @user.name
 		@assignments = Assignment.where(:user_id => @user)
 		@active_assignments = @assignments.where(:active => true).to_a

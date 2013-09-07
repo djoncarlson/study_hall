@@ -9,7 +9,7 @@ class AttendancesController < ApplicationController
   end
   
   def show
-    @attendance = Attendance.find(params[:id])
+    @attendance = Attendance.find_by_id(params[:id])
 
     @missingstudents_array = Attendance.db_to_web(@attendance.missingstudents)
     @allstudents_array = Attendance.db_to_web(@attendance.all)

@@ -21,7 +21,7 @@ class AssignmentsController < ApplicationController
   end
   
   def show
-    @assignment = Assignment.find(params[:id])
+    @assignment = Assignment.find_by_id(params[:id])
     @student = @assignment.student
   end
   
@@ -33,7 +33,7 @@ class AssignmentsController < ApplicationController
   end
   
   def update
-    @assignment = Assignment.find(params[:id])
+    @assignment = Assignment.find_by_id(params[:id])
     if @assignment.update_attributes(params[:assignment])
       flash[:success] = "Assignment updated"
       redirect_to assignment_path(@assignment)
@@ -44,15 +44,15 @@ class AssignmentsController < ApplicationController
   end
   
   def inactivate
-    Assignment.find(params[:id]).update_attributes(:active => 0)
+    Assignment.find_by_id(params[:id]).update_attributes(:active => 0)
     flash[:success] = "Assignment inactivated"
     redirect_to user_path(current_user)
   end
   
   def destroy
-    Assignment.find(params[:id]).update_attributes(:active => 0)
+    Assignment.find_by_id(params[:id]).update_attributes(:active => 0)
     flash[:success] = "Assignment inactivated"
-    redirect_to assignment_path(@assignment)
+    redirect_to user_path(current_user)
   end
   
 

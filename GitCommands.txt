@@ -12,3 +12,13 @@ to pull a copy of the heroku db -> heroku db:pull --app studyhall (then migrage 
 When deploying to master or staging remember to do a heroku db:migrate to bring the database up to date.
 heroku run rake db:migrate --app studyhall
 heroku run rake db:migrate --app studyhall-sandbox
+
+Pull dbs from heroku:
+
+$ heroku pgbackups:capture
+$ curl -o latest.dump `heroku pgbackups:url`
+
+Restore db:
+
+pg_restore --verbose --clean --no-acl --no-owner -h localhost -U devin -d studyhall_development latest.dump
+Then run rake db:migrate if necessary!
