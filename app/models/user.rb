@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   
   class CodeValidator < ActiveModel::EachValidator
     def validate_each(record, attribute, value)
-      record.errors[attribute] << "must match the correct secret code." unless value =~ /\Awexification/i
+      record.errors[attribute] << "must match the correct secret code." unless value =~ /\Aeducation/i
     end
   end
   
