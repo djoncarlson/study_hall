@@ -28,7 +28,7 @@ class AssignmentsController < ApplicationController
   def index
     @active_assignments = Assignment.where(:active => true).to_a
     @inactive_assignments = Assignment.where(:active => false).to_a
-    @long_term_assignments = Assignment.where(:long_term => true).to_a
+    @long_term_assignments = Assignment.where("long_term = ? AND active = ?", true, true).to_a
     @assignments = Assignment.all.paginate :page => params[:page], :order => 'active DESC', :per_page => 15
   end
   
@@ -46,13 +46,13 @@ class AssignmentsController < ApplicationController
   def inactivate
     Assignment.find_by_id(params[:id]).update_attributes(:active => 0)
     flash[:success] = "Assignment inactivated"
-    redirect_to user_path(current_user)
+    redirect_to students_path()
   end
   
   def destroy
     Assignment.find_by_id(params[:id]).update_attributes(:active => 0)
     flash[:success] = "Assignment inactivated"
-    redirect_to user_path(current_user)
+    redirect_to students_path()
   end
   
 

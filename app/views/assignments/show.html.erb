@@ -18,7 +18,7 @@
 <% if @assignment.comment? %>
 	<p><strong>Closure comments:</strong><br /><%= @assignment.comment %></p>
 <% end %>
-<% if current_user.id == @assignment.user_id && @assignment.active == true %>
+<% if @assignment.active == true %>
 <p>
 <%= link_to "Close", @assignment, 
       :method => :delete,

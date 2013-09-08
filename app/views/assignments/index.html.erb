@@ -13,12 +13,10 @@
     <% @active_assignments.each do |assignment| %>
       <tr>
         <td class="student_inactivate">
-          <% if current_user.id == assignment.user_id %>
-            <%= link_to "close", assignment, 
-                :method => :delete,
-                :confirm => "Are you sure you want to close this assignment?",
-                :title => assignment.assn %>
-          <% end %>
+					<%= link_to "close", assignment, 
+					:method  => :delete,
+					:confirm => "Are you sure you want to close this assignment?",
+					:title   => assignment.assn %>
         </td>
         <td class="student_assn"><%= link_to assignment.assn, assignment_path(assignment) %></td>
         <td class="student_name"><%= link_to assignment.student.name, student_path(assignment.student) %></td>
@@ -46,7 +44,12 @@
     </tr>
     <% @long_term_assignments.each do |assignment| %>
       <tr>
-        <td class="student_inactivate">&nbsp;</td>
+        <td class="student_inactivate">
+						<%= link_to "close", assignment, 
+						:method  => :delete,
+						:confirm => "Are you sure you want to close this assignment?",
+						:title   => assignment.assn %>
+	      </td>
         <td class="student_assn"><%= link_to assignment.assn, assignment_path(assignment) %><% if assignment.comment? %> *<% end %></td>
         <td class="student_name"><%= link_to assignment.student.name, student_path(assignment.student) %></td>
         <td class="student_name"><%= link_to assignment.user.name, user_path(assignment.user) %></td>
