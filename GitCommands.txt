@@ -4,8 +4,8 @@ git commit -m "finished with that branch"
 git checkout master
 git merge branch_name
 git push
-git push heroku master
-git push staging
+git push staging master
+git push production master
 
 to pull a copy of the heroku db -> heroku db:pull --app studyhall (then migrage (rake db:migrate) if necessary)
 
@@ -22,3 +22,10 @@ Restore db:
 
 pg_restore --verbose --clean --no-acl --no-owner -h localhost -U devin -d studyhall_development latest.dump
 Then run rake db:migrate if necessary!
+
+$ heroku create --remote production
+$ git push production master
+$ heroku run rake db:migrate --remote production
+$ heroku ps --remote production
+
+heroku pgbackups:restore HEROKU_POSTGRESQL_TURQUOISE -a target-app `heroku pgbackups:url -a source-app`
