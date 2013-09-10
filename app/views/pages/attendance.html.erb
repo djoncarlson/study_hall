@@ -26,9 +26,9 @@
 	        <tr>
 	          <td class="student_inactivate"><%= check_box_tag('missingstudents[]', assignment.id) %></td>
 	          <td class="student_detention"><% if assignment.detention %>D<% else %>SH<% end %></td>
-			 			<td class="student_name"><%= assignment.student.name %></td>
+			 			<td class="student_name"><%= link_to assignment.student.name, student_path(assignment.student) %></td>
 	          <td class="student_name"><%= assignment.user.name %></td>
-	          <td class="student_assn"><%= assignment.assn %></td>
+	          <td class="student_assn"><%= link_to assignment.assn, assignment_path(assignment) %></td>
         	  <td class="student_sessions"><span class="timestamp"><%= assignment.created_at.strftime('%d %b %Y') %></span></td>
 	        </tr>
 	      <% end %>

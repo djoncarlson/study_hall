@@ -4,7 +4,6 @@ class UsersController < ApplicationController
   before_filter :admin_user, :only => :destroy
 
   def index
-    @title = "All users"
     @users = User.paginate(:page => params[:page])
  		@assignments = Assignment.where(:user_id => @user)
 		@active_assignments = @assignments.where(:active => true)

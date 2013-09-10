@@ -21,7 +21,7 @@
     <%= f.text_field :instructions, :size => 38 %>
   </div>
 
-  <strong>Study Hall Sessions</strong>
+  <strong>Study Hall or Detention Sessions</strong>
   <table class="box_table">
        <th>
         <td>&nbsp;</td>
@@ -48,13 +48,8 @@
         <td><%= f.check_box :fafter, :disabled => true %></td>
       </tr>
     </table>
-		<small>detention held Tuesday and Thursday only<br />please do not assign more than 4 sessions</small>
-		<% unless @assignment.new_record? %>
-		<div class="field">
-	    <%= f.label "Comments regarding closure" %><br/>
-	    <%= f.text_field :comment , :size => "38" %>
-	  </div>
-		<% end %>
+		<small>detention held after school only<br />please do not assign more than 4 sessions</small>
+
 	  <div class="actions">
 	    <%= f.submit %>
 	  </div>

@@ -45,14 +45,14 @@ class AssignmentsController < ApplicationController
   
   def inactivate
     Assignment.find_by_id(params[:id]).update_attributes(:active => 0)
-    flash[:success] = "Assignment inactivated"
-    redirect_to students_path()
+    flash[:success] = "Assignment Inactivated"
+    redirect_to assignments_path()
   end
   
   def destroy
     Assignment.find_by_id(params[:id]).update_attributes(:active => 0)
-    flash[:success] = "Assignment inactivated"
-    redirect_to students_path()
+    flash[:success] = "Assignment Inactivated"
+    redirect_to assignments_path()
   end
   
 

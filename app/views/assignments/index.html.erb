@@ -1,4 +1,4 @@
-<h3>Current Assignments</h3>
+<h3>All Current Assignments</h3>
 <% if @active_assignments.empty? %>
 	<p>No students currently assigned to study hall</p>
 <% else %>	
@@ -6,6 +6,7 @@
     <tr>
       <th>&nbsp;</th>
       <th>Assignment</th>
+			<th>Type</th>
       <th>Student</th>
       <th>Teacher</th>
       <th>Created</th>
@@ -18,9 +19,10 @@
 					:confirm => "Are you sure you want to close this assignment?",
 					:title   => assignment.assn %>
         </td>
-        <td class="student_assn"><%= link_to assignment.assn, assignment_path(assignment) %></td>
+        <td class="student_detention"><% if assignment.detention? %>D<% else %>SH<% end %></td>
+				<td class="student_assn"><%= link_to assignment.assn, assignment_path(assignment) %></td>
         <td class="student_name"><%= link_to assignment.student.name, student_path(assignment.student) %></td>
-        <td class="student_name"><%= link_to assignment.user.name, user_path(assignment.user) %></td>
+        <td class="student_name"><%= assignment.user.name %></td>
 				<% if assignment.created_at <= (Time.now - 7.days) && assignment.long_term != true %>
         	<td class="student_sessions"><span class="timestamp_red"><%= assignment.created_at.strftime('%d %b %Y') %></span></td>
 				<% else %>
@@ -64,7 +66,7 @@
 
   <table class="students">
     <tr>
-      <th>&nbsp;</th>
+      <th>Type</th>
       <th>Assignment</th>
       <th>Student</th>
       <th>Teacher</th>
@@ -72,7 +74,7 @@
     </tr>
     <% @inactive_assignments.each do |assignment| %>
       <tr>
-        <td class="student_inactivate">&nbsp;</td>
+        <td class="student_detention"><% if assignment.detention? %>D<% else %>SH<% end %></td>
         <td class="student_assn"><%= link_to assignment.assn, assignment_path(assignment) %><% if assignment.comment? %> *<% end %></td>
         <td class="student_name"><%= link_to assignment.student.name, student_path(assignment.student) %></td>
         <td class="student_name"><%= link_to assignment.user.name, user_path(assignment.user) %></td>

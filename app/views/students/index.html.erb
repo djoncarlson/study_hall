@@ -1,3 +1,10 @@
+<%= form_tag students_path, :method => 'get', :id => "student_search" do %>
+	<p>
+		Filter by name: 
+			<%= text_field_tag :search, params[:search] %>
+	</p>
+<% end %>
+<div id="students"><%= render 'students' %></div>
 <% if current_user.admin? %>
 <p>
 	<table>
@@ -5,29 +12,8 @@
 		<h3>Add a student to the database</h3>
   	<%= render 'shared/student_form'%>
 	</td>
+	</table>
 </p>
-</table>
 <hr />
-<% end %>
-
-<% if false %>
-<table>
-<tr>
-	<td>
-		<h3>All Students</h3>
-	</td>
-	<td> <% end %>
-		<%= form_tag students_path, :method => 'get', :id => "student_search" do %>
-			<p>
-			Filter by name: 
-			  <%= text_field_tag :search, params[:search] %>
-			</p>
-		<% end %>
-<% if false %><!--[if lte IE 9]><![endif]-->
-	</td>
-</tr>
-</table>
-<% end %>
-<div id="students"><%= render 'students' %></div>
 	<%= link_to "New School Year? - Update Database", '/newYearPromotion', :confirm => "This action will delete all assignments, attendance records, and senior students. It will also move all students up a grade level. This should be done only once! Are you sure you want to do this? Hit 'Cancel' if you have any questions in your head.", :class => "small_red_button round" %>		
-
+<% end %>

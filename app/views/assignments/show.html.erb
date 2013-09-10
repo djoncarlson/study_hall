@@ -3,7 +3,7 @@
 <td style="vertical-align: top">
 <p><strong><h3><%= @assignment.student.name %></h3></strong><br />
 <strong>Assignment:</strong> <%= @assignment.assn%><br />
-<strong>Special Instructions:</strong><% if @assignment.instructions != "" %><%= @assignment.instructions %><% else %> None<% end %><br />
+<% if @assignment.instructions != "" %><strong>Special Instructions:</strong> <%= @assignment.instructions %><% end %><br />
 </p>
 <p><strong>Teacher:</strong> <%= @assignment.user.name %><br />
 <strong>Created:</strong> <%= time_ago_in_words(@assignment.created_at)%> ago on <%= @assignment.updated_at.strftime('%d %b %Y') %></p>
