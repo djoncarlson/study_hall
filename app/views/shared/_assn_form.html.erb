@@ -6,7 +6,7 @@
   </div>
   
   <div class="field" id="focus_field">
-    <%= f.label "Describe the assignment" %><br />
+    <%= f.label "Describe the assignment *" %><br />
     <%= f.text_field :assn, :size => 38 %><br />
 		<%= f.check_box :detention %>Detention<br />
 		<%= f.check_box :long_term %>Long Term <small>(admin or athletic dept only)</small>
@@ -17,11 +17,11 @@
 	</div>
 	
   <div class="field">
-    <%= f.label "Special instructions (optional)"%><br/>
+    <%= f.label "Special instructions"%><br/>
     <%= f.text_field :instructions, :size => 38 %>
   </div>
 
-  <strong>Study Hall or Detention Sessions</strong>
+  <strong>Study Hall or Detention Sessions *</strong>
   <table class="box_table">
        <th>
         <td>&nbsp;</td>
@@ -48,7 +48,7 @@
         <td><%= f.check_box :fafter, :disabled => true %></td>
       </tr>
     </table>
-		<small>detention held after school only<br />please do not assign more than 4 sessions</small>
+		<small>* required field<br />detention held after school only<br />do not assign more than 4 sessions<br /><br /></small>
 
 	  <div class="actions">
 	    <%= f.submit %>

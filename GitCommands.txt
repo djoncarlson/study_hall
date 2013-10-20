@@ -29,3 +29,12 @@ $ heroku run rake db:migrate --remote production
 $ heroku ps --remote production
 
 heroku pgbackups:restore HEROKU_POSTGRESQL_TURQUOISE -a target-app `heroku pgbackups:url -a source-app`
+
+startup...
+navigate to rails code directory
+rails s
+to get the pg database server running...
+use pg-start and pg-stop which are bash aliases that are set in .bash_profile
+alias pg-start='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
+alias pg-stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
+

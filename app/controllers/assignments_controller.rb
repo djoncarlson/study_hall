@@ -15,8 +15,8 @@ class AssignmentsController < ApplicationController
       flash[:success] = "Assignment Created"
       redirect_to student_path(params[:assignment][:student_id])
     else
-      flash[:notice] = "Assignment Not Created"
-      render 'new'
+      flash[:error] = "Assignment Not Created. Please check that all required fields are filled in."
+      redirect_to student_path(params[:assignment][:student_id])
     end
   end
   

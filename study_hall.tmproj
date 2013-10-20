@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>app/models/user.rb</string>
+	<string>Gemfile</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -21,6 +21,20 @@
 	<integer>258</integer>
 	<key>metaData</key>
 	<dict>
+		<key>Gemfile</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>5</integer>
+				<key>line</key>
+				<integer>2</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>GitCommands.txt</key>
 		<dict>
 			<key>caret</key>
@@ -54,9 +68,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>30</integer>
+				<integer>35</integer>
 				<key>line</key>
-				<integer>54</integer>
+				<integer>47</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -194,28 +208,44 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>7</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>51</integer>
+				<integer>0</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>40</integer>
+			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>32</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
 		</dict>
 		<key>app/views/assignments/show.html.erb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>5</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>25</integer>
+				<integer>26</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>1</integer>
+			<integer>0</integer>
 		</dict>
 		<key>app/views/attendances/index.html.erb</key>
 		<dict>
@@ -261,6 +291,20 @@
 				<integer>35</integer>
 			</dict>
 		</dict>
+		<key>app/views/layouts/_header.html.erb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>64</integer>
+				<key>line</key>
+				<integer>14</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>app/views/layouts/application.html.erb</key>
 		<dict>
 			<key>caret</key>
@@ -280,16 +324,44 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>14</integer>
+				<integer>100</integer>
 				<key>line</key>
-				<integer>12</integer>
+				<integer>28</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>14</integer>
+			<integer>13</integer>
+		</dict>
+		<key>app/views/pages/home.html.erb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>35</integer>
+				<key>line</key>
+				<integer>11</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
 		</dict>
 		<key>app/views/shared/_assn_form.html.erb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>51</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>24</integer>
+		</dict>
+		<key>app/views/shared/_attendance_form.html.erb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
@@ -336,9 +408,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>line</key>
-				<integer>32</integer>
+				<integer>14</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -359,6 +431,36 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
+		<key>app/views/students/show.html.erb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>90</integer>
+				<key>line</key>
+				<integer>96</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>72</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>38</integer>
+				<key>line</key>
+				<integer>96</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>90</integer>
+				<key>line</key>
+				<integer>96</integer>
+			</dict>
+		</dict>
 		<key>app/views/users/index.html.erb</key>
 		<dict>
 			<key>caret</key>
@@ -378,14 +480,30 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>74</integer>
+				<integer>96</integer>
 				<key>line</key>
-				<integer>85</integer>
+				<integer>9</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>18</integer>
+			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>6</integer>
+				<key>line</key>
+				<integer>9</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>96</integer>
+				<key>line</key>
+				<integer>9</integer>
+			</dict>
 		</dict>
 		<key>config/application.rb</key>
 		<dict>
@@ -573,7 +691,10 @@
 	<key>openDocuments</key>
 	<array>
 		<string>GitCommands.txt</string>
+		<string>Gemfile</string>
 		<string>app/views/shared/_assn_form.html.erb</string>
+		<string>app/views/shared/_attendance_form.html.erb</string>
+		<string>app/views/students/show.html.erb</string>
 		<string>app/views/attendances/show.html.erb</string>
 		<string>app/views/attendances/index.html.erb</string>
 		<string>app/views/assignments/show.html.erb</string>
@@ -597,11 +718,13 @@
 		<string>app/helpers/application_helper.rb</string>
 		<string>app/helpers/users_helper.rb</string>
 		<string>app/views/assignments/index.html.erb</string>
+		<string>app/views/layouts/_header.html.erb</string>
 		<string>app/notes</string>
 		<string>app/mailers/notifier.rb</string>
 		<string>app/views/users/show.html.erb</string>
 		<string>config/database.yml</string>
 		<string>app/views/students/index.html.erb</string>
+		<string>app/views/pages/home.html.erb</string>
 		<string>app/views/students/_students.html.erb</string>
 		<string>app/views/students/index.js.erb</string>
 	</array>
