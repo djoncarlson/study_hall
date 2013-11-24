@@ -38,3 +38,10 @@ use pg-start and pg-stop which are bash aliases that are set in .bash_profile
 alias pg-start='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 alias pg-stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 
+Add Git Remotes to Heroku
+First list the git remotes: git remote -v
+you can remove using git remote rm "name"
+make sure you know the heroku URL: type heroku info -a appname
+git remote add staging git@heroku.com:acas-test.git
+git remote add production git@heroku.com:acas.git
+then git push staging master and git push staging production should work just fine.
