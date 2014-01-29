@@ -9,7 +9,7 @@ class Notifier < ActionMailer::Base
     @allassignment_array = Assignment.array_of_assignments(@attendance.all)
     @email_array = Assignment.array_of_emails(@missingassignment_array)  
 # production
-    mail :to => "vzea@cotopaxi.k12.ec, avandarakis@cotopaxi.k12.ec, sbrazinsky@cotopaxi.k12.ec", :cc => @email_array, :subject => "Study Hall & Detention Attendance"
+    mail :to => "avandarakis@cotopaxi.k12.ec, sbrazinsky@cotopaxi.k12.ec", :cc => @email_array, :subject => "Study Hall & Detention Attendance"
 # testing
 #    mail :to => "djoncarlson@gmail.com", :subject => "Study Hall Attendance"
 
@@ -21,9 +21,9 @@ class Notifier < ActionMailer::Base
     @old_assignment_emails = Assignment.array_of_emails(@old_assignment_array)
     unless @old_assignments.empty?
 # production      
-      @old_assignments.each do |assn|
-       mail :to => assn.user.email, :subject => "Old Study Hall Assignment"
-      end
+#      @old_assignments.each do |assn|
+#       mail :to => assn.user.email, :subject => "Old Study Hall Assignment"
+#      end
       mail :to => @old_assignment_emails, :subject => "Old Study Hall Assignments"
 # testing
 #      mail :to => "djoncarlson@gmail.com", :subject => "Old Study Hall Assignments"

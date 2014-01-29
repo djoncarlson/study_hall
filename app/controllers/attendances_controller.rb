@@ -28,6 +28,8 @@ class AttendancesController < ApplicationController
     @attendance.missingstudents = params[:missingstudents]
     @attendance.all = params[:all_ids]
     
+    Attendance.auto_close(@attendance.missingstudents, @attendance.all)
+    
     if @attendance.save
       Notifier.attendance_taken(@attendance).deliver
       Notifier.one_week_reminder().deliver
@@ -38,5 +40,6 @@ class AttendancesController < ApplicationController
       render 'new'
     end
   end
+
 
 end

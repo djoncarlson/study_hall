@@ -1,11 +1,5 @@
 Hello,
-<p>
-It appears that you have an assignment that is a outdated. Students should only be in the system for one week. Please log into the system and fix this at your earliest convenience.</p>
 
-<ul>
-<% @old_assignment_array.each do |assignment| %>
-	<li><%= assignment.student.name %> -- <%= assignment.assn %> for <%= assignment.user.name %></li>
-<% end %>	
-</ul>
+It appears that you have an assignment that is a outdated. Students should only be in the system for one week.
 
-<a href="http://acas.herokuapp.com">Study Hall Login</a><br>
+Please log into the study hall manager at your earliest convenience: http://acas.herokuapp.com

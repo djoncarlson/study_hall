@@ -26,6 +26,20 @@ class Attendance < ActiveRecord::Base
     end
   end
   
+  def self.auto_close(missing_assn_ids, all_assn_ids)
+    unless all_assn_ids.nil?
+      all_assn_ids.each do |id|
+        if missing_assn_ids.include?(id)
+        else
+          if Assignment.find_by_id(id).detention?
+            Assignment.find_by_id(id).update_attributes(:active => 0)
+          end
+        end
+      end
+    end
+  end
+
+  
   #This function is broken and shouldn't be used until fixed!
   def self.strip_deleted_students(student_array)
     clean = []

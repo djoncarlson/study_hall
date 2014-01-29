@@ -13,8 +13,8 @@ class PagesController < ApplicationController
     else
       section = params[:attendance_list]
       @attendance_list = current_user.fetch_students_for_attendance(section)
-      @detention_list = current_user.fetch_detention_for_attendance(section)
-      @studyhall_list = current_user.fetch_studyhall_for_attendance(section)
+#      @detention_list = current_user.fetch_detention_for_attendance(section)
+#      @studyhall_list = current_user.fetch_studyhall_for_attendance(section)
       @attendance_ids = @attendance_list.collect(&:id)
       @session_in_words = current_user.convert_section_to_string(section)
       @sections = {'Monday - Lunch' => 'mlunch', 'Monday - After' => 'mafter', 'Tuesday - Lunch' => 'tlunch', 'Tuesday - After' => 'tafter', 'Wednesday - Lunch' => 'wlunch', 'Wednesday - After' => 'wafter', 'Thursday - Lunch' => 'rlunch', 'Thursday - After' => 'rafter', 'Friday - Lunch' => 'flunch', 'Friday - After' => 'fafter'}
